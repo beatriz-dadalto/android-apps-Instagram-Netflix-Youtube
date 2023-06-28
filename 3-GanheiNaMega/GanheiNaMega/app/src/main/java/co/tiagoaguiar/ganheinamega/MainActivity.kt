@@ -29,11 +29,17 @@ class MainActivity : AppCompatActivity() {
         // Banco de dados de preferências
         prefs = getSharedPreferences("db", Context.MODE_PRIVATE)
         val result = prefs.getString("result", null)
-        if (result != null) {
-            txtResult.text = "Última aposta: $result"
-        }
+
+        // Alternativa 1
+//        if (result != null) {
+//            txtResult.text = "Última aposta: $result"
+//        }
+
+        // Alternativa 2
+         result?.let { txtResult.text = "Última aposta: $result" }
 
         // 3 opcoes de fazer click no btn
+
         // 1- via XML (lá no XML onClick)
         // 2- variavel que seja do tipo View.OnClickListener (interface)
 //        btnGenerate.setOnClickListener(buttonClickListner)
@@ -79,10 +85,16 @@ class MainActivity : AppCompatActivity() {
 
         txtResult.text = numbers.joinToString(" - ")
 
-        val editor = prefs.edit()
-        editor.putString("result", txtResult.text.toString())
-        editor.apply()
+        // Alternativa 1
+//        val editor = prefs.edit()
+//        editor.putString("result", txtResult.text.toString())
+//        editor.apply()
 
+        // Alternativa 2
+        prefs.edit().apply {
+            putString("result", txtResult.text.toString())
+            apply()
+        }
 
         /*
             commit() -> salvar de forma sincrona (bloquear a interface) e
