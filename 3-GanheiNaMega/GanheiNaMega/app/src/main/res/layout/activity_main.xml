@@ -26,24 +26,27 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="32dp"
         android:ems="10"
+        android:hint="@string/number_hint"
         android:inputType="number"
         android:maxLength="2"
         android:textAlignment="center"
-        android:hint="@string/number_hint"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/txt_title" />
 
     <TextView
         android:id="@+id/txt_result"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginStart="48dp"
         android:layout_marginTop="32dp"
-        tools:text="Olá, Mundo!"
+        android:layout_marginEnd="48dp"
+        android:textAlignment="center"
         android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/edit_number" />
+        app:layout_constraintTop_toBottomOf="@+id/edit_number"
+        tools:text="Olá, Mundo!" />
 
     <Button
         android:id="@+id/btn_generate"
