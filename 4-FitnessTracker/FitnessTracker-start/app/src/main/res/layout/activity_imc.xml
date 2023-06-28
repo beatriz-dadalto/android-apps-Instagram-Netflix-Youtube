@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -9,47 +8,31 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:gravity="center"
         android:layout_gravity="center"
+        android:gravity="center"
+        android:orientation="vertical"
         tools:context=".ImcActivity">
 
         <TextView
+            style="@style/TextViewForm"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="30dp"
-            android:layout_marginEnd="30dp"
-            android:layout_marginBottom="40dp"
             android:text="@string/imc_desc" />
 
         <EditText
             android:id="@+id/edit_imc_weight"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="30dp"
-            android:layout_marginEnd="30dp"
-            android:layout_marginBottom="40dp"
-            android:hint="@string/weight"
-            android:inputType="number"
-            android:maxLength="3" />
+            style="@style/EditTextForm"
+            android:hint="@string/weight" />
 
         <EditText
             android:id="@+id/edit_imc_height"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="30dp"
-            android:layout_marginEnd="30dp"
-            android:layout_marginBottom="40dp"
-            android:hint="@string/height"
-            android:inputType="number"
-            android:maxLength="3" />
+            style="@style/EditTextForm"
+            android:hint="@string/height" />
 
         <Button
             android:id="@+id/btn_imc_send"
-            android:text="@string/calc"
-            android:backgroundTint="@color/black"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"/>
+            style="@style/ButtonForm"
+            android:text="@string/calc" />
 
     </LinearLayout>
 </ScrollView>
