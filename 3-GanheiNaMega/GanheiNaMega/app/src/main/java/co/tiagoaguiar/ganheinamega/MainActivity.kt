@@ -1,7 +1,10 @@
 package co.tiagoaguiar.ganheinamega
 
+import android.content.Context
+import android.content.SharedPreferences
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
@@ -9,6 +12,9 @@ import android.widget.Toast
 import java.util.Random
 
 class MainActivity : AppCompatActivity() {
+
+    private lateinit var prefs: SharedPreferences
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -19,6 +25,13 @@ class MainActivity : AppCompatActivity() {
         val editText: EditText = findViewById(R.id.edit_number)
         val txtResult: TextView = findViewById(R.id.txt_result)
         val btnGenerate: Button = findViewById(R.id.btn_generate)
+
+        // Banco de dados de preferências
+        prefs = getSharedPreferences("db", Context.MODE_PRIVATE)
+        val result = prefs.getString("result", null)
+        if (result != null) {
+            txtResult.text = "Última aposta: $result"
+        }
 
         // 3 opcoes de fazer click no btn
         // 1- via XML (lá no XML onClick)
@@ -65,6 +78,18 @@ class MainActivity : AppCompatActivity() {
         }
 
         txtResult.text = numbers.joinToString(" - ")
+
+        val editor = prefs.edit()
+        editor.putString("result", txtResult.text.toString())
+        editor.apply()
+
+
+        /*
+            commit() -> salvar de forma sincrona (bloquear a interface) e
+            informa se teve sucesso ou nao
+            apply() -> salvar de forma assincrona (nao vai bloquear a interface) mas
+            nao informa se teve sucesso ou nao
+         */
     }
 
 }
