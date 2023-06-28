@@ -7,6 +7,8 @@ import android.view.View
 import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
+import android.widget.Toast
+import java.util.Random
 import kotlin.math.log
 
 class MainActivity : AppCompatActivity() {
@@ -28,8 +30,36 @@ class MainActivity : AppCompatActivity() {
 
         // 3- mais simples - bloco de codigo que sera disparado pelo onCLickListener
         btnGenerate.setOnClickListener {
-            Log.i("TESTE", "Botão Clicado")
+
+            val text = editText.text.toString()
+
+            numberGenerator(text, txtResult)
         }
+    }
+
+    private fun numberGenerator(text: String, txtResult: TextView) {
+        if (text.isNotEmpty()) {
+            val quantity = text.toInt()
+            if (quantity in 6..15) {
+                val random = Random()
+                val numbers = mutableSetOf<Int>()
+
+                while (true) {
+                    val number = random.nextInt(60)
+                    numbers.add(number + 1)
+                    if (numbers.size == quantity) {
+                        break
+                    }
+                }
+
+                txtResult.text = numbers.joinToString(" - ")
+            } else {
+                Toast.makeText(this, "Informe um numero entre 6 e 15", Toast.LENGTH_LONG).show()
+            }
+        } else {
+            Toast.makeText(this, "Informe um numero entre 6 e 15", Toast.LENGTH_LONG).show()
+        }
+
     }
 
     // 1- via XML
