@@ -1,7 +1,5 @@
 package co.tiagoaguiar.fitnesstracker
 
-import android.content.Context
-import android.content.DialogInterface
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
@@ -9,6 +7,7 @@ import android.view.inputmethod.InputMethodManager
 import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
+import androidx.annotation.StringRes
 import androidx.appcompat.app.AlertDialog
 
 class ImcActivity : AppCompatActivity() {
@@ -56,6 +55,7 @@ class ImcActivity : AppCompatActivity() {
         service.hideSoftInputFromWindow(currentFocus?.windowToken, 0)
     }
 
+    @StringRes
     private fun imcResponse(imc: Double): Int {
         return when {
             imc < 15.0 -> R.string.imc_severely_low_weight
