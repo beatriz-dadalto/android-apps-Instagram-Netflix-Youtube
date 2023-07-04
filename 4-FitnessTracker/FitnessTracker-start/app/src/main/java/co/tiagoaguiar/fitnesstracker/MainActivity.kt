@@ -58,7 +58,7 @@ class MainActivity : AppCompatActivity() {
 
                 2 -> {
                     // inicia uma activity diferente
-                    startActivity(Intent(this@MainActivity, ImcActivity::class.java))
+                    startActivity(Intent(this@MainActivity, TmbActivity::class.java))
                 }
             }
         }
