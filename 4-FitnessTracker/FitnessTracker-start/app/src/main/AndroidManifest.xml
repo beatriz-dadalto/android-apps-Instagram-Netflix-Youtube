@@ -12,6 +12,7 @@
         android:theme="@style/Theme.FitnessTracker">
         <activity
             android:name=".ListCalcActivity"
+            android:parentActivityName=".MainActivity"
             android:exported="false" />
         <activity
             android:name=".ImcActivity"
