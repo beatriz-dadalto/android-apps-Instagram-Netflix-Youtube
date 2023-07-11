@@ -51,7 +51,13 @@ class ImcActivity : AppCompatActivity() {
                     Thread {
                         val app = application as App
                         val dao = app.db.calcDao()
-                        dao.insert(Calc(type = "imc", response = result))
+                        // a key vem do ListCalcActivity
+                        val updateId = intent.extras?.getInt("updateId")
+                        if (updateId != null) {
+                            dao.update(Calc(id = updateId, type = "imc", response = result))
+                        } else {
+                            dao.insert(Calc(type = "imc", response = result))
+                        }
 
                         runOnUiThread {
                             openListActivity()
