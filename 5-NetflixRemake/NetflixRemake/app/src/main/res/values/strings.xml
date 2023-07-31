@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">NetflixRemake</string>
+    <string name="movieImage">Imagem do filme</string>
 </resources>
