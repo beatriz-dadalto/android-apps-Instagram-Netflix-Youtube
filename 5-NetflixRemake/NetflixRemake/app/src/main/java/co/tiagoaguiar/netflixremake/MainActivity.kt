@@ -2,36 +2,24 @@ package co.tiagoaguiar.netflixremake
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
+import co.tiagoaguiar.netflixremake.model.Movie
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+
+        val movies = mutableListOf<Movie>()
+        for (i in 0 until 60) {
+            val movie = Movie("https://exemplo.com/$i.jpg")
+            movies.add(movie)
+        }
+
+        val rv: RecyclerView = findViewById(R.id.rv_main)
+        rv.layoutManager = LinearLayoutManager(this)
+        rv.adapter = MainAdapter(movies)
     }
 
-    override fun onStart() {
-        super.onStart()
-        Log.i("TESTE", "onStart")
-    }
-
-    override fun onResume() {
-        super.onResume()
-        Log.i("TESTE", "onResume")
-    }
-
-    override fun onPause() {
-        super.onPause()
-        Log.i("TESTE", "onPause")
-    }
-
-    override fun onStop() {
-        super.onStop()
-        Log.i("TESTE", "onStop")
-    }
-
-    override fun onDestroy() {
-        super.onDestroy()
-        Log.i("TESTE", "onDestroy")
-    }
 }
