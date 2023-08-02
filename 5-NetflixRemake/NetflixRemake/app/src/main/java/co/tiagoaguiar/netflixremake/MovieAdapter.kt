@@ -27,7 +27,9 @@ class MovieAdapter(private val movies: List<Movie>) : RecyclerView.Adapter<Movie
     inner class MovieViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         fun bind(movie: Movie) {
             val imgCover: ImageView = itemView.findViewById(R.id.img_cover)
-            imgCover.setImageResource(movie.coverUrl)
+
+            // TODO: aqui vai ser trocado por uma URL que virá do servidor
+            //imgCover.setImageResource(movie.coverUrl)
         }
     }
 }
