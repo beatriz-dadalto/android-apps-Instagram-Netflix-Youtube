@@ -27,5 +27,78 @@
         app:layout_constraintTop_toTopOf="parent"
         app:titleTextColor="@color/white" />
 
+    <ImageView
+        android:layout_width="72dp"
+        android:layout_height="72dp"
+        android:src="@drawable/ic_play"
+        app:layout_constraintBottom_toBottomOf="@id/movie_img"
+        app:layout_constraintEnd_toEndOf="@id/movie_img"
+        app:layout_constraintStart_toStartOf="@id/movie_img"
+        app:layout_constraintTop_toTopOf="@id/movie_img" />
+
+    <TextView
+        android:id="@+id/movie_txt_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginBottom="22dp"
+        android:textColor="@color/white"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@id/movie_img"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:text="Olá, Beatriz!" />
+
+    <TextView
+        android:id="@+id/movie_txt_desc"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="48dp"
+        android:ellipsize="end"
+        android:lineSpacingExtra="3sp"
+        android:maxLines="3"
+        android:textColor="@color/gray_light"
+        android:textSize="14sp"
+        app:layout_constraintTop_toBottomOf="@id/movie_img"
+        tools:text="Olá, Mundo! Olá, Mundo! Olá, Mundo! Olá, Mundo! Olá, Mundo! Olá, Mundo! Olá, Mundo! Olá, Mundo! Olá, Mundo! Olá, Mundo! Olá, Mundo!" />
+
+    <TextView
+        android:id="@+id/movie_txt_cast"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="48dp"
+        android:ellipsize="end"
+        android:lineSpacingExtra="3sp"
+        android:maxLines="3"
+        android:textColor="@android:color/darker_gray"
+        android:textSize="14sp"
+        app:layout_constraintTop_toBottomOf="@id/movie_txt_desc"
+        tools:text="Olá, Mundo! Olá, Mundo! Olá, Mundo! Olá, Mundo! Olá, Mundo! Olá, Mundo! Olá, Mundo! Olá, Mundo! Olá, Mundo! Olá, Mundo! Olá, Mundo!" />
+
+    <TextView
+        android:id="@+id/txt_fixed"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="24dp"
+        android:text="@string/similar"
+        android:textAllCaps="true"
+        android:textColor="@color/white"
+        android:textSize="14sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/movie_txt_cast" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/movie_rv_similar"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginTop="16dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/txt_fixed" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
