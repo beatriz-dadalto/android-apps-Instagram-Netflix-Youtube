@@ -7,14 +7,25 @@
     android:background="@color/black"
     tools:context=".MovieActivity">
 
+    <ImageView
+        android:id="@+id/movie_img"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:contentDescription="@string/movieImage"
+        android:scaleType="centerCrop"
+        android:src="@drawable/shadows"
+        app:layout_constraintDimensionRatio="16:9"
+        app:layout_constraintTop_toTopOf="parent" />
+
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/movie_toolbar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/black"
+        android:background="@android:color/transparent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:titleTextColor="@color/white" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
