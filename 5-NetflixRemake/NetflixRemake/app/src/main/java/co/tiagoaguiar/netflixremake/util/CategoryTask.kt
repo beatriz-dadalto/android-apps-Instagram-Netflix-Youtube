@@ -2,7 +2,6 @@ package co.tiagoaguiar.netflixremake.util
 
 import android.os.Handler
 import android.os.Looper
-import android.util.Log
 import co.tiagoaguiar.netflixremake.model.Category
 import co.tiagoaguiar.netflixremake.model.Movie
 import org.json.JSONObject
@@ -27,59 +26,49 @@ class CategoryTask(private val callback: Callback) {
     // fazer uma chamada paralela
     fun execute(url: String) {
         callback.onPreExecute()
-        // nesse momento estamos utilizando a UI-Thread (1)
+        // nesse momento, estamos utilizando a UI-thread (1)
         val executor = Executors.newSingleThreadExecutor()
 
         executor.execute {
-
             var urlConnection: HttpsURLConnection? = null
             var buffer: BufferedInputStream? = null
             var stream: InputStream? = null
-
             try {
-                // nesse momento estamos utilizando a NOVA THREAD [processo paralelo (2)]
+                // nesse momento, estamos utilizando a NOVA-thread [processo paralelo] (2)
                 val requestURL = URL(url) // abrir uma URL
-                urlConnection =
-                    requestURL.openConnection() as HttpsURLConnection // abrir a conexão
-                urlConnection.readTimeout = 2000 // tempo de leitura (2 segundos)
-                urlConnection.connectTimeout = 2000 // tempo para conexão (2 segundos)
+                urlConnection = requestURL.openConnection() as HttpsURLConnection // abrir a conexão
+                urlConnection.readTimeout = 2000 // tempo leitura (2s)
+                urlConnection.connectTimeout = 2000 // tempo conexão (2s)
 
-                val statusCode = urlConnection.responseCode
-
+                val statusCode: Int = urlConnection.responseCode
                 if (statusCode > 400) {
                     throw IOException("Erro na comunicação com o servidor!")
                 }
 
-                stream = urlConnection.inputStream // HTTP devolve uma sequência de bytes
-
+                stream = urlConnection.inputStream // sequencia bytes
                 // forma 1: simples e rápida
-//                    val jsonAsString =
-//                        stream.bufferedReader().use { it.readText() } // bytes para String
-//                    Log.i("TESTE", jsonAsString)
 
-                // forma 2: bytes para string
+                // val jsonAsString = stream.bufferedReader().use { it.readText() } // bytes -> String
+
+                // forma 2: bytes -> string
                 buffer = BufferedInputStream(stream)
                 val jsonAsString = toString(buffer)
 
-                // JSON pronto para ser convertido em um DATA CLASS!
+                // o JSON está preparado para ser convertido em um DATA CLASS!!
                 val categories = toCategories(jsonAsString)
 
                 handler.post {
-                    // aqui roda dentro da UI-Thread novamente
+                    // aqui roda dentro de UI-thread
                     callback.onResult(categories)
                 }
 
-                Log.i("TESTE", categories.toString())
 
             } catch (e: IOException) {
-                val message = e.message ?: " Erro desconhecido"
-
+                val message = e.message ?: "erro desconhecido"
                 handler.post {
-                    // aqui roda dentro da UI-Thread novamente
+                    // aqui roda dentro da UI-Thread
                     callback.onFailure(message)
                 }
-
-                callback.onFailure(message)
             } finally {
                 urlConnection?.disconnect()
                 stream?.close()
@@ -97,18 +86,22 @@ class CategoryTask(private val callback: Callback) {
         // buscar categorias
         for (i in 0 until jsonCategories.length()) {
             val jsonCategory = jsonCategories.getJSONObject(i)
+
             val title = jsonCategory.getString("title")
-            // buscar filmes
             val jsonMovies = jsonCategory.getJSONArray("movie")
+            // buscar filmes
             val movies = mutableListOf<Movie>()
             for (j in 0 until jsonMovies.length()) {
                 val jsonMovie = jsonMovies.getJSONObject(j)
                 val id = jsonMovie.getInt("id")
-                val coverUrl = jsonMovie.getString("corver_url")
+                val coverUrl = jsonMovie.getString("cover_url")
+
                 movies.add(Movie(id, coverUrl))
             }
+
             categories.add(Category(title, movies))
         }
+
         return categories
     }
 
@@ -116,6 +109,7 @@ class CategoryTask(private val callback: Callback) {
         val bytes = ByteArray(1024)
         val baos = ByteArrayOutputStream()
         var read: Int
+
         while (true) {
             read = stream.read(bytes)
             if (read <= 0) {
@@ -125,4 +119,5 @@ class CategoryTask(private val callback: Callback) {
         }
         return String(baos.toByteArray())
     }
+
 }
