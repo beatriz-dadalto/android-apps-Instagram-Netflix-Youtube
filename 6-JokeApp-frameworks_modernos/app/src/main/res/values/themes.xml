@@ -1,6 +1,6 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
     <!-- Base application theme. -->
-    <style name="Theme.JokerAppDev" parent="Theme.MaterialComponents.Light.NoActionBar">
+    <style name="Theme.JokeAppDev" parent="Theme.MaterialComponents.Light.NoActionBar">
         <!-- Primary brand color. -->
         <item name="colorPrimary">@color/orange_500</item>
         <item name="colorPrimaryVariant">@color/orange_700</item>
@@ -13,4 +13,8 @@
         <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>
         <!-- Customize your theme here. -->
     </style>
+
+    <!-- Appbar -->
+    <style name="Theme.JokeAppDev.AppbarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+    <style name="Theme.JokeAppDev.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 </resources>
