@@ -46,4 +46,12 @@ dependencies {
     // fragments
     implementation 'androidx.navigation:navigation-fragment-ktx:2.3.5'
     implementation 'androidx.navigation:navigation-ui-ktx:2.3.5'
+
+    // https://github.com/lisawray/groupie -> flexible library for complex RecyclerView layouts
+    implementation "com.github.lisawray.groupie:groupie:2.9.0"
+
+    // splashscreen
+    //https://developer.android.com/develop/ui/views/launch/splash-screen/migrate
+    implementation 'androidx.core:core-splashscreen:1.0.0-alpha01'
+
 }
