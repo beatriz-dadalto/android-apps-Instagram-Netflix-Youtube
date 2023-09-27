@@ -59,4 +59,7 @@ dependencies {
     implementation 'com.squareup.retrofit2:converter-gson:2.9.0'
     implementation("com.squareup.okhttp3:logging-interceptor:4.2.1")
 
+    // https://square.github.io/picasso/ -> Download images
+    implementation 'com.squareup.picasso:picasso:2.71828'
+
 }

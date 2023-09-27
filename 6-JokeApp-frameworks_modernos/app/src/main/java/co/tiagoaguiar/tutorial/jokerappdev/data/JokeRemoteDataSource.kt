@@ -6,6 +6,7 @@ import retrofit2.Callback
 import retrofit2.Response
 import java.lang.RuntimeException
 
+// buscar dados da API
 class JokeRemoteDataSource {
 
     fun findBy(categoryName: String, callback: JokeCallback) {
