@@ -4,4 +4,7 @@
     <string name="menu_joke_day">Piada do Dia</string>
     <string name="menu_about">Sobre</string>
     <string name="social">Social</string>
+    <string name="app_description">Carlos Ray \"Chuck\" Norris (Ryan, 10 de março de 1940) é um artista marcial, ator, produtor de cinema, argumentista estadounidense. Depois de servir na Força Aérea dos Estados Unidos, começou a tornar-se conhecido como praticante de artes marciais. Em 1990, fundou a sua escola de artes marciais, Chun Kuk Do, e em 2005, a World Combat League (WCL), uma competição de combate por equipes.</string>
+    <string name="app_website">https://pt.wikipedia.org/wiki/Chuck_Norris</string>
+    <string name="build_version">Versão (%1s)</string>
 </resources>

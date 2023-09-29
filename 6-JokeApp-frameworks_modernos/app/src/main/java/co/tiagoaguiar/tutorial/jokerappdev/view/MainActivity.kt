@@ -1,4 +1,4 @@
-package co.tiagoaguiar.tutorial.jokerappdev
+package co.tiagoaguiar.tutorial.jokerappdev.view
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -10,6 +10,7 @@ import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.navigateUp
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
+import co.tiagoaguiar.tutorial.jokerappdev.R
 import com.google.android.material.navigation.NavigationView
 
 class MainActivity : AppCompatActivity() {
