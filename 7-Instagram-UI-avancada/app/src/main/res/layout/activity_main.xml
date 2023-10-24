@@ -6,6 +6,15 @@
     android:layout_height="match_parent"
     tools:context=".main.view.MainActivity">
 
+    <fragment
+        android:id="@+id/main_fragment"
+        android:name="co.tiagoaguiar.course.instagram.profile.view.FragmentProfile"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toTopOf="@id/main_bottom_nav"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:layout="@layout/fragment_profile" />
+
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/main_bottom_nav"
         android:layout_width="match_parent"
