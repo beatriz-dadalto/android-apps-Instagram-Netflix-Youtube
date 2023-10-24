@@ -1,6 +1,6 @@
 # Aplicativos sustentáveis, testáveis e de fácil manutenção.
 
-> :unlock: Aprendizados do curso.
+> :unlock: Aprendizados do curso ministrado por Tiago Aguiar -> [androiddeveloper.com.br](androiddeveloper.com.br/)
 
 ### :books: Aplicação prática de:
 - Material Design.
