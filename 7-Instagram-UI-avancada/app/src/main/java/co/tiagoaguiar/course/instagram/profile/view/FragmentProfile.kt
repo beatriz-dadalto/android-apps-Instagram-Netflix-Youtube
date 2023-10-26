@@ -2,6 +2,8 @@ package co.tiagoaguiar.course.instagram.profile.view
 
 import android.os.Bundle
 import android.view.LayoutInflater
+import android.view.Menu
+import android.view.MenuInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
@@ -11,6 +13,18 @@ import androidx.recyclerview.widget.RecyclerView
 import co.tiagoaguiar.course.instagram.R
 
 class FragmentProfile : Fragment() {
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        // informar que esse fragmento é responsavel por gerenciar opcoes de menu
+        setHasOptionsMenu(true)
+    }
+
+    // ativar e inflar o menu
+    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
+        inflater.inflate(R.menu.menu_profile, menu)
+        super.onCreateOptionsMenu(menu, inflater)
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater,
