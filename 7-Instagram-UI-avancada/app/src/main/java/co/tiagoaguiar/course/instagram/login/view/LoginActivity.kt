@@ -57,7 +57,7 @@ class LoginActivity : AppCompatActivity(), Login.View {
     }
 
     override fun showProgress(enabled: Boolean) {
-        binding.loginBtnEnter.showProgress(true)
+        binding.loginBtnEnter.showProgress(enabled)
     }
 
     override fun displayEmailFailure(emailError: Int?) {
@@ -78,6 +78,5 @@ class LoginActivity : AppCompatActivity(), Login.View {
     override fun onUserUnauthorized(message: String) {
         Toast.makeText(this, message, Toast.LENGTH_LONG).show()
     }
-
 
 }
