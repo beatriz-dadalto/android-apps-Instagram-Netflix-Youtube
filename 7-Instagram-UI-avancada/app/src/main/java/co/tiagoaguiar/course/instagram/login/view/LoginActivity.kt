@@ -5,29 +5,48 @@ import android.os.Bundle
 import co.tiagoaguiar.course.instagram.common.util.TxtWatcher
 import co.tiagoaguiar.course.instagram.databinding.ActivityLoginBinding
 import co.tiagoaguiar.course.instagram.login.Login
+import co.tiagoaguiar.course.instagram.login.presentation.LoginPresenter
 
 class LoginActivity : AppCompatActivity(), Login.View {
 
     private lateinit var binding: ActivityLoginBinding
+
+    // referência para a interface Login.Presenter
+    override lateinit var presenter: Login.Presenter
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
         binding = ActivityLoginBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        // class concreta que implementa os métodos
+        presenter = LoginPresenter(this)
+
         // forma enxuta. desse jeito não preciso colocar binding em todos elementos xml da tela
         with(binding) {
-            loginEditEmail.addTextChangedListener(watcher)
-            loginEditPassword.addTextChangedListener(watcher)
-
+            loginEditEmail.addTextChangedListener(isEmpty)
+            loginEditEmail.addTextChangedListener(TxtWatcher {
+                displayEmailFailure(null)
+            })
+            loginEditPassword.addTextChangedListener(isEmpty)
+            loginEditPassword.addTextChangedListener(TxtWatcher {
+                displayPasswordFailure(null)
+            })
             loginBtnEnter.setOnClickListener {
-                TODO("Call the PRESENTER layer")
+                presenter.login(loginEditEmail.text.toString(), loginEditPassword.text.toString())
             }
         }
     }
 
-    private val watcher = TxtWatcher {
-        binding.loginBtnEnter.isEnabled = it.isNotEmpty()
+    override fun onDestroy() {
+        presenter.onDestroy()
+        super.onDestroy()
+    }
+
+    private val isEmpty = TxtWatcher {
+        binding.loginBtnEnter.isEnabled = binding.loginEditEmail.text.toString().isNotEmpty() &&
+                binding.loginEditPassword.text.toString().isNotEmpty()
     }
 
     override fun showProgress(enabled: Boolean) {
@@ -49,5 +68,6 @@ class LoginActivity : AppCompatActivity(), Login.View {
     override fun onUserUnauthorized() {
         TODO("Show alert")
     }
+
 
 }
