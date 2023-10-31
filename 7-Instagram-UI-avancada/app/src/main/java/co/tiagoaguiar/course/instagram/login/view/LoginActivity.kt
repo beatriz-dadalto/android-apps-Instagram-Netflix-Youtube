@@ -4,6 +4,7 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
+import co.tiagoaguiar.course.instagram.common.base.DependencyInjector
 import co.tiagoaguiar.course.instagram.common.util.TxtWatcher
 import co.tiagoaguiar.course.instagram.databinding.ActivityLoginBinding
 import co.tiagoaguiar.course.instagram.login.Login
@@ -25,9 +26,8 @@ class LoginActivity : AppCompatActivity(), Login.View {
         binding = ActivityLoginBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        val repository = LoginRepository(FakeDataSource())
-        // class concreta que implementa os métodos
-        presenter = LoginPresenter(this, repository)
+        // LoginPresenter eh class concreta que implementa os métodos
+        presenter = LoginPresenter(this, DependencyInjector.loginRepository())
 
 
         // forma enxuta. desse jeito não preciso colocar binding em todos elementos xml da tela
