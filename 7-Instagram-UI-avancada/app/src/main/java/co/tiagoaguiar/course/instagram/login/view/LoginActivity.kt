@@ -12,6 +12,7 @@ import co.tiagoaguiar.course.instagram.login.data.FakeDataSource
 import co.tiagoaguiar.course.instagram.login.data.LoginRepository
 import co.tiagoaguiar.course.instagram.login.presentation.LoginPresenter
 import co.tiagoaguiar.course.instagram.main.view.MainActivity
+import co.tiagoaguiar.course.instagram.register.view.RegisterActivity
 
 class LoginActivity : AppCompatActivity(), Login.View {
 
@@ -29,7 +30,6 @@ class LoginActivity : AppCompatActivity(), Login.View {
         // LoginPresenter eh class concreta que implementa os métodos
         presenter = LoginPresenter(this, DependencyInjector.loginRepository())
 
-
         // forma enxuta. desse jeito não preciso colocar binding em todos elementos xml da tela
         with(binding) {
             loginEditEmail.addTextChangedListener(isEmpty)
@@ -43,7 +43,12 @@ class LoginActivity : AppCompatActivity(), Login.View {
             loginBtnEnter.setOnClickListener {
                 presenter.login(loginEditEmail.text.toString(), loginEditPassword.text.toString())
             }
+            loginTxtRegister.setOnClickListener { goToRegisterScreen() }
         }
+    }
+
+    private fun goToRegisterScreen() {
+        startActivity(Intent(this, RegisterActivity::class.java))
     }
 
     override fun onDestroy() {
