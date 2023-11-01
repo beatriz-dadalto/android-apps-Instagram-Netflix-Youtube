@@ -1,5 +1,6 @@
 package co.tiagoaguiar.course.instagram.register.view
 
+import android.content.Context
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.View
@@ -14,6 +15,7 @@ class RegisterEmailFragment : Fragment(R.layout.fragment_register_email), Regist
 
     private var binding: FragmentRegisterEmailBinding? = null
     override lateinit var presenter: RegisterEmail.Presenter
+    private var fragmentAttachListener: FragmentAttachListener? = null
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -41,6 +43,32 @@ class RegisterEmailFragment : Fragment(R.layout.fragment_register_email), Regist
         }
     }
 
+    /*
+    Toda vez que um fragment eh anexado dentro de uma Activity esse método é disparado.
+    pq vai usar esse onAttach? pra dizer para Activity que o fragment foi adicionado
+    dentro dela e agora eu posso tratar essa Activity sendo um listener para esse fragment
+ */
+    override fun onAttach(context: Context) {
+        super.onAttach(context)
+        if (context is FragmentAttachListener) {
+            fragmentAttachListener = context
+        }
+    }
+
+    override fun onDestroy() {
+        // sempre que uma variável passa a ficar null o
+        // garbage collector "varre" e limpa livrando assim recursos
+        binding = null
+        fragmentAttachListener = null
+        presenter.onDestroy()
+        super.onDestroy()
+    }
+
+    private val isEmpty = TxtWatcher {
+        binding?.registerBtnNext?.isEnabled =
+            binding?.registerEditEmail?.text.toString().isNotEmpty()
+    }
+
     override fun showProgress(enabled: Boolean) {
         binding?.registerBtnNext?.showProgress(enabled)
     }
@@ -50,24 +78,11 @@ class RegisterEmailFragment : Fragment(R.layout.fragment_register_email), Regist
     }
 
     override fun goToNameAndPasswordScreen(email: String) {
-        TODO("Send to next Fragment")
-    }
-
-    private val isEmpty = TxtWatcher {
-        binding?.registerBtnNext?.isEnabled =
-            binding?.registerEditEmail?.text.toString().isNotEmpty()
+        fragmentAttachListener?.goToNameAndPasswordScreen(email)
     }
 
     override fun displayEmailFailure(emailError: Int?) {
         binding?.registerEditEmailInput?.error = emailError?.let { getString(it) }
-    }
-
-    override fun onDestroy() {
-        // sempre que uma variável passa a ficar null o
-        // garbage collector "varre" e limpa livrando assim recursos
-        binding = null
-        presenter.onDestroy()
-        super.onDestroy()
     }
 
 }
