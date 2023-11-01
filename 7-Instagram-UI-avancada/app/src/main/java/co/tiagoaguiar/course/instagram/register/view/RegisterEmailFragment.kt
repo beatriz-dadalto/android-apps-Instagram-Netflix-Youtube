@@ -4,9 +4,11 @@ import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.View
 import co.tiagoaguiar.course.instagram.R
+import co.tiagoaguiar.course.instagram.common.base.DependencyInjector
 import co.tiagoaguiar.course.instagram.common.util.TxtWatcher
 import co.tiagoaguiar.course.instagram.databinding.FragmentRegisterEmailBinding
 import co.tiagoaguiar.course.instagram.register.RegisterEmail
+import co.tiagoaguiar.course.instagram.register.presentation.RegisterEmailPresenter
 
 class RegisterEmailFragment : Fragment(R.layout.fragment_register_email), RegisterEmail.View {
 
@@ -17,6 +19,9 @@ class RegisterEmailFragment : Fragment(R.layout.fragment_register_email), Regist
         super.onViewCreated(view, savedInstanceState)
 
         binding = FragmentRegisterEmailBinding.bind(view)
+
+        val repository = DependencyInjector.registerEmailRepository()
+        presenter = RegisterEmailPresenter(this, repository)
 
         binding?.let {
             with(it) {
@@ -36,19 +41,32 @@ class RegisterEmailFragment : Fragment(R.layout.fragment_register_email), Regist
         }
     }
 
+    override fun showProgress(enabled: Boolean) {
+        binding?.registerBtnNext?.showProgress(enabled)
+    }
+
+    override fun onEmailFailure(message: String) {
+        binding?.registerEditEmailInput?.error = message
+    }
+
+    override fun goToNameAndPasswordScreen(email: String) {
+        TODO("Send to next Fragment")
+    }
+
     private val isEmpty = TxtWatcher {
-        binding?.registerBtnNext?.isEnabled = binding?.registerEditEmail?.text.toString().isNotEmpty()
+        binding?.registerBtnNext?.isEnabled =
+            binding?.registerEditEmail?.text.toString().isNotEmpty()
     }
 
     override fun displayEmailFailure(emailError: Int?) {
-        TODO("Not yet implemented")
+        binding?.registerEditEmailInput?.error = emailError?.let { getString(it) }
     }
 
     override fun onDestroy() {
         // sempre que uma variável passa a ficar null o
         // garbage collector "varre" e limpa livrando assim recursos
         binding = null
-       // presenter.onDestroy()
+        presenter.onDestroy()
         super.onDestroy()
     }
 
