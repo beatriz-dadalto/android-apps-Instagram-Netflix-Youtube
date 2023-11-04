@@ -1,5 +1,6 @@
 package co.tiagoaguiar.course.instagram.register.view
 
+import android.content.Context
 import android.os.Bundle
 import android.view.View
 import android.widget.Toast
@@ -16,6 +17,7 @@ class RegisterNamePasswordFragment : Fragment(R.layout.fragment_register_name_pa
     RegisterNameAndPassword.View {
 
     private var binding: FragmentRegisterNamePasswordBinding? = null
+    private var fragmentAttachListener: FragmentAttachListener? = null
 
     override lateinit var presenter: RegisterNameAndPassword.Presenter
 
@@ -62,6 +64,18 @@ class RegisterNamePasswordFragment : Fragment(R.layout.fragment_register_name_pa
         }
     }
 
+    /*
+        Toda vez que um fragment eh anexado dentro de uma Activity esse método é disparado.
+        pq vai usar esse onAttach? pra dizer para Activity que o fragment foi adicionado
+        dentro dela e agora eu posso tratar essa Activity sendo um listener para esse fragment
+    */
+    override fun onAttach(context: Context) {
+        super.onAttach(context)
+        if (context is FragmentAttachListener) {
+            fragmentAttachListener = context
+        }
+    }
+
     override fun showProgress(enabled: Boolean) {
         binding?.registerNameBtnNext?.showProgress(enabled)
     }
@@ -70,8 +84,8 @@ class RegisterNamePasswordFragment : Fragment(R.layout.fragment_register_name_pa
         binding?.registerEditNameInput?.error = nameError?.let { getString(it) }
     }
 
-    override fun displayPasswordFailure(passError: Int?) {
-        binding?.registerEditPasswordInput?.error = passError?.let { getString(it) }
+    override fun displayPasswordFailure(passwordError: Int?) {
+        binding?.registerEditPasswordInput?.error = passwordError?.let { getString(it) }
     }
 
     override fun onCreateFailure(message: String) {
@@ -79,7 +93,7 @@ class RegisterNamePasswordFragment : Fragment(R.layout.fragment_register_name_pa
     }
 
     override fun onCreateSuccess(name: String) {
-        // TODO("Open welcome screen")
+        fragmentAttachListener?.goToWelcomeScreen(name)
     }
 
     private val watcher = TxtWatcher {
