@@ -13,7 +13,7 @@
     <string name="password_confirm">Confirmar senha</string>
     <string name="continuee">Continuar</string>
     <string name="agree_terms_policy">Ao clicar em Avançar, você concorda com nossos <b>Termos, Política de Dados e Política de Cookies.</b></string>
-    <string name="welcome_to_instagram"><b>BEM-VINDO AO INSTAGRAM,\n%1$s</b>\nEncontre pessoas para seguir e comece a compartilhar fotos. Você pode alterar seu nome de usuário a qualquer momento.</string>
+    <string name="welcome_to_instagram"><b>%1$s,\nBEM-VINDO(A) AO INSTAGRAM</b>\nEncontre pessoas para seguir e comece a compartilhar fotos. Você pode alterar seu nome de usuário a qualquer momento.</string>
     <string name="photo_register_subtitle">Adicione uma foto do perfil para que seus amigos saibam que é você.</string>
     <string name="photo_register_title">Adicionar foto do perfil</string>
     <string name="take_picture">Tirar foto</string>
@@ -41,7 +41,7 @@
     <string name="follow">Seguir</string>
     <string name="logout">Deseja sair?</string>
     <string name="logout_action">Sair</string>
-    <string name="cancel">Cancel</string>
+    <string name="cancel">Cancelar</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="invalid_password">A senha deve conter ao menos 8 caracteres.</string>

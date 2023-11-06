@@ -26,7 +26,7 @@
                 style="@style/Theme.Instagram.TextViewBase.Form"
                 android:text="@string/welcome_to_instagram" />
 
-            <co.tiagoaguiar.course.instagram.login.view.LoadingButton
+            <co.tiagoaguiar.course.instagram.common.view.LoadingButton
                 android:id="@+id/register_btn_next"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
