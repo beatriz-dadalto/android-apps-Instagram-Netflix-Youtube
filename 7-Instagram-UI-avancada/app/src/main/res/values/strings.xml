@@ -31,7 +31,7 @@
     <string name="password_not_equal">Senha e confirmar senha devem ser iguais.</string>
     <string name="save">Salvar</string>
     <string name="title_activity_add">AddActivity</string>
-    <string name="photo">Foto</string>
+    <string name="photo">Câmera</string>
     <string name="gallery">Galeria</string>
     <string name="write_caption">Escreva uma descrição…</string>
     <string name="share">compartilhar</string>
