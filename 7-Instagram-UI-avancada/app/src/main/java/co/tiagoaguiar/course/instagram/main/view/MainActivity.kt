@@ -15,13 +15,16 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        window.insetsController?.setSystemBarsAppearance(
-            WindowInsetsController.APPEARANCE_LIGHT_STATUS_BARS,
-            WindowInsetsController.APPEARANCE_LIGHT_STATUS_BARS
-        )
-        window.statusBarColor = ContextCompat.getColor(this, R.color.gray)
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
+            window.insetsController?.setSystemBarsAppearance(
+                WindowInsetsController.APPEARANCE_LIGHT_STATUS_BARS,
+                WindowInsetsController.APPEARANCE_LIGHT_STATUS_BARS
+            )
+            window.statusBarColor = ContextCompat.getColor(this, R.color.gray)
+        }
 
-        val toolbar =findViewById<Toolbar>(R.id.main_toolbar)
+
+        val toolbar = findViewById<Toolbar>(R.id.main_toolbar)
 
         // toolbar responsavel por escutar os eventos de acao em cima dela
         setSupportActionBar(toolbar)

@@ -4,6 +4,7 @@ import android.app.Dialog
 import android.content.Context
 import android.os.Bundle
 import android.view.View
+import android.view.Window
 import android.widget.LinearLayout
 import android.widget.TextView
 import co.tiagoaguiar.course.instagram.R
@@ -50,6 +51,7 @@ class CustomDialog(context: Context) : Dialog(context) {
     }
 
     override fun show() {
+        requestWindowFeature(Window.FEATURE_NO_TITLE)
         super.show()
 
         // se titleId nao for null coloque o conteudo de titleId no campo de texto txtTitle
