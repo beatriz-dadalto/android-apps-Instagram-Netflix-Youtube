@@ -36,7 +36,7 @@
 
         <fragment
             android:id="@+id/main_fragment"
-            android:name="co.tiagoaguiar.course.instagram.camera.view.FragmentCamera"
+            android:name="co.tiagoaguiar.course.instagram.camera.view.CameraFragment"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             app:layout_behavior="@string/appbar_scrolling_view_behavior"
