@@ -127,7 +127,6 @@ class RegisterActivity : AppCompatActivity(), FragmentAttachListener {
 
     private fun replaceFragment(fragment: Fragment) {
         replaceFragment(R.id.register_fragment, fragment)
-        hideKeyboard()
     }
 
     private fun openImageCropper(uri: Uri) {
