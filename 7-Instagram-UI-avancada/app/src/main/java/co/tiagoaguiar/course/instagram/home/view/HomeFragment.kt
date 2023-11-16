@@ -20,12 +20,6 @@ class HomeFragment : Fragment() {
         setHasOptionsMenu(true)
     }
 
-    // ativar e inflar o menu
-    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
-        inflater.inflate(R.menu.menu_profile, menu)
-        super.onCreateOptionsMenu(menu, inflater)
-    }
-
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -40,6 +34,12 @@ class HomeFragment : Fragment() {
         val rv = view.findViewById<RecyclerView>(R.id.home_rv)
         rv.layoutManager = LinearLayoutManager(requireContext())
         rv.adapter = PostAdapter()
+    }
+
+    // ativar e inflar o menu
+    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
+        inflater.inflate(R.menu.menu_profile, menu)
+        super.onCreateOptionsMenu(menu, inflater)
     }
 
     private class PostAdapter : RecyclerView.Adapter<PostAdapter.PostViewHolder>() {

@@ -83,7 +83,7 @@ class MainActivity : AppCompatActivity(), BottomNavigationView.OnNavigationItemS
         var scrollToolbarEnabled = false
         when (item.itemId) {
             R.id.menu_bottom_home -> {
-                // para nao empilhar se clicar varias vezes no icone
+                // if para nao empilhar se clicar varias vezes no icone
                 if (currentFragment == homeFragment) return false
                 currentFragment = homeFragment
             }
