@@ -28,7 +28,7 @@ class MainActivity : AppCompatActivity(), BottomNavigationView.OnNavigationItemS
     private lateinit var searchFragment: Fragment
     private lateinit var cameraFragment: Fragment
     private lateinit var profileFragment: Fragment
-    private var currentFragment: Fragment? = null
+    private lateinit var currentFragment: Fragment
 
     @RequiresApi(Build.VERSION_CODES.R)
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -58,6 +58,22 @@ class MainActivity : AppCompatActivity(), BottomNavigationView.OnNavigationItemS
         cameraFragment = CameraFragment()
         profileFragment = ProfileFragment()
 
+        currentFragment = homeFragment
+
+        /*
+            adicionar/carregar todos fragments mas esconder os que não quero mostrar primeiro
+            vantagem: nao vai dar replaceFragment que busca todos dados novamente
+            desvantagem: vai carregar informações que talvez o user nao vai usar
+            onNavigationItemSelected mostra o fragment
+         */
+        supportFragmentManager.beginTransaction().apply {
+            add(R.id.main_fragment, profileFragment, "3").hide(profileFragment)
+            add(R.id.main_fragment, cameraFragment, "2").hide(cameraFragment)
+            add(R.id.main_fragment, searchFragment, "1").hide(searchFragment)
+            add(R.id.main_fragment, homeFragment, "0")
+            commit()
+        }
+
         binding.mainBottomNav.setOnNavigationItemSelectedListener(this)
         binding.mainBottomNav.selectedItemId = R.id.menu_bottom_home
     }
@@ -85,21 +101,25 @@ class MainActivity : AppCompatActivity(), BottomNavigationView.OnNavigationItemS
             R.id.menu_bottom_home -> {
                 // if para nao empilhar se clicar varias vezes no icone
                 if (currentFragment == homeFragment) return false
+                supportFragmentManager.beginTransaction().hide(currentFragment).show(homeFragment).commit()
                 currentFragment = homeFragment
             }
 
             R.id.menu_bottom_search -> {
                 if (currentFragment == searchFragment) return false
+                supportFragmentManager.beginTransaction().hide(currentFragment).show(searchFragment).commit()
                 currentFragment = searchFragment
             }
 
             R.id.menu_bottom_add -> {
                 if (currentFragment == cameraFragment) return false
+                supportFragmentManager.beginTransaction().hide(currentFragment).show(cameraFragment).commit()
                 currentFragment = cameraFragment
             }
 
             R.id.menu_bottom_profile -> {
                 if (currentFragment == profileFragment) return false
+                supportFragmentManager.beginTransaction().hide(currentFragment).show(profileFragment).commit()
                 currentFragment = profileFragment
                 scrollToolbarEnabled = true
             }
@@ -108,9 +128,9 @@ class MainActivity : AppCompatActivity(), BottomNavigationView.OnNavigationItemS
         setScrollToolbarEnabled(scrollToolbarEnabled)
 
         // se nao for nulo
-        currentFragment?.let { currentFragment ->
-            replaceFragment(R.id.main_fragment, currentFragment)
-        }
+//        currentFragment?.let { currentFragment ->
+//            replaceFragment(R.id.main_fragment, currentFragment)
+//        }
         return true
     }
 }
