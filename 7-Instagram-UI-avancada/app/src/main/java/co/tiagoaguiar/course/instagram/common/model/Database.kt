@@ -7,6 +7,7 @@ object Database {
     // essas estruturas de dados são como se fossem tabelas no banco de dados
     val usersAuth = hashSetOf<UserAuth>()
     val photos = hashSetOf<Photo>()
+    val posts = hashMapOf<String, Set<Post>>() // para cada id terá uma coleção de posts
 
     // uma vez autenticado guarda a referencia para utilizar no app quando precisar
     var sessionAuth: UserAuth? = null
