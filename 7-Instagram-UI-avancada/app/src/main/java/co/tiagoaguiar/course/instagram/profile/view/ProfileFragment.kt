@@ -1,5 +1,6 @@
 package co.tiagoaguiar.course.instagram.profile.view
 
+import android.os.Bundle
 import android.view.View
 import android.widget.Toast
 import androidx.recyclerview.widget.GridLayoutManager
@@ -31,6 +32,22 @@ class ProfileFragment : BaseFragment<FragmentProfileBinding, Profile.Presenter>(
         binding?.profileRv?.adapter = adapter
 
         presenter.fetchUserProfile()
+    }
+
+    override fun onViewStateRestored(savedInstanceState: Bundle?) {
+        if (savedInstanceState != null) {
+            val state = savedInstanceState.getParcelable<UserAuth?>("myState")
+            state?.let {
+                displayUserProfile(it)
+            }
+        }
+        super.onViewStateRestored(savedInstanceState)
+    }
+
+    // disparado para armazenar alguma informação
+    override fun onSaveInstanceState(outState: Bundle) {
+        outState.putParcelable("myState", presenter.state)
+        super.onSaveInstanceState(outState)
     }
 
     override fun showProgress(enabled: Boolean) {

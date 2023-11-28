@@ -13,7 +13,7 @@ import androidx.fragment.app.Fragment
     as classes filhas herdar e devolver instrucoes
  */
 abstract class BaseFragment<T, P : BasePresenter>(
-    @LayoutRes  layoutId: Int,
+    @LayoutRes layoutId: Int,
     val bind: (View) -> T
 ) : Fragment(layoutId) {
 
@@ -49,7 +49,12 @@ abstract class BaseFragment<T, P : BasePresenter>(
 
         binding = bind(view)
 
-        setupViews()
+        savedInstanceState?.getString("name")
+
+        if (savedInstanceState == null) {
+            setupViews()
+        }
+
     }
 
     abstract fun setupViews()
