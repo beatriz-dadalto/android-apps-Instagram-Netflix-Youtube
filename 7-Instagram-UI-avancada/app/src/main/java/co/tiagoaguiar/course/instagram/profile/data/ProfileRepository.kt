@@ -10,7 +10,7 @@ class ProfileRepository(private val dataSource: ProfileDataSource) {
         dataSource.fetchUserProfile(userUUID, callback)
     }
 
-    fun fetchuserPosts(userUUID: String, callback: RequestCallback<List<Post>>) {
+    fun fetchUserPosts(userUUID: String, callback: RequestCallback<List<Post>>) {
         dataSource.fetchuserPosts(userUUID, callback)
     }
 }
