@@ -1,10 +1,6 @@
 package co.tiagoaguiar.course.instagram.common.model
 
-import android.os.Parcelable
-import kotlinx.android.parcel.Parcelize
 
-
-@Parcelize
 data class UserAuth(
     val uuid: String,
     val name: String,
@@ -13,4 +9,4 @@ data class UserAuth(
     val postCount: Int = 0,
     val followingCount: Int = 0,
     val followersCount: Int = 0
-) : Parcelable
+)

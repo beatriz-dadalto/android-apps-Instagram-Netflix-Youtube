@@ -1,6 +1,5 @@
 package co.tiagoaguiar.course.instagram.profile.view
 
-import android.os.Bundle
 import android.view.View
 import android.widget.Toast
 import androidx.recyclerview.widget.GridLayoutManager
@@ -12,7 +11,6 @@ import co.tiagoaguiar.course.instagram.common.model.UserAuth
 import co.tiagoaguiar.course.instagram.databinding.FragmentProfileBinding
 import co.tiagoaguiar.course.instagram.profile.Profile
 import co.tiagoaguiar.course.instagram.profile.presenter.ProfilePresenter
-import co.tiagoaguiar.course.instagram.profile.presenter.ProfileState
 
 class ProfileFragment : BaseFragment<FragmentProfileBinding, Profile.Presenter>(
     R.layout.fragment_profile,
@@ -28,42 +26,11 @@ class ProfileFragment : BaseFragment<FragmentProfileBinding, Profile.Presenter>(
         presenter = ProfilePresenter(this, repository)
     }
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-        presenter.subscribe(
-            if (savedInstanceState != null) {
-                ProfileState(
-                    (savedInstanceState.getParcelableArray("posts") as Array<Post>).toList(),
-                    savedInstanceState.getParcelable("user")
-                )
-            } else {
-                null
-            }
-        )
-    }
-
     override fun setupViews() {
         binding?.profileRv?.layoutManager = GridLayoutManager(requireContext(), 3)
         binding?.profileRv?.adapter = adapter
 
-//    presenter.fetchUserProfile()
-    }
-
-//  override fun onViewStateRestored(savedInstanceState: Bundle?) {
-//    if (savedInstanceState != null) {
-//      val state = savedInstanceState.getParcelable<UserAuth?>("myState")
-//      state?.let {
-//        displayUserProfile(it)
-//      }
-//    }
-//    super.onViewStateRestored(savedInstanceState)
-//  }
-
-    // disparado para armazenar alguma informação
-    override fun onSaveInstanceState(outState: Bundle) {
-        outState.putParcelable("user", presenter.getState().fetchUserProfile())
-        outState.putParcelableArray("posts", presenter.getState().fetchUserPosts()?.toTypedArray())
-        super.onSaveInstanceState(outState)
+        presenter.fetchUserProfile()
     }
 
     override fun showProgress(enabled: Boolean) {
@@ -76,7 +43,7 @@ class ProfileFragment : BaseFragment<FragmentProfileBinding, Profile.Presenter>(
         binding?.profileTxtFollowersCount?.text = userAuth.followersCount.toString()
         binding?.profileTxtUsername?.text = userAuth.name
         binding?.profileTxtBio?.text = "TODO"
-//    presenter.fetchUserPosts()
+        presenter.fetchUserPosts()
     }
 
     override fun displayRequestFailure(message: String) {
