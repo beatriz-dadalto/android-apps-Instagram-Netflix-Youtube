@@ -7,4 +7,5 @@ data class Post(
     val uri: Uri,
     val caption: String,
     val timestamp: Long,
+    val publisher: UserAuth
 )
