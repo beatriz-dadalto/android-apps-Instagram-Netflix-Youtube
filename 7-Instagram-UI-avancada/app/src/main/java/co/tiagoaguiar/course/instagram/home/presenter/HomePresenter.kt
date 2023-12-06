@@ -10,6 +10,10 @@ class HomePresenter(
     private val repository: HomeRepository
 ) : Home.Presenter {
 
+    override fun clearCache() {
+        repository.clearCache()
+    }
+
     override fun fetchFeed() {
         view?.showProgress(true)
         repository.fetchFeed(object : RequestCallback<List<Post>> {

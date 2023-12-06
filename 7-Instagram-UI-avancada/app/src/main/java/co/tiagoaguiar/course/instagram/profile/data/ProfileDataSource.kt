@@ -18,7 +18,7 @@ interface ProfileDataSource {
         throw UnsupportedOperationException()
     }
 
-    fun putPosts(response: List<Post>) {
+    fun putPosts(response: List<Post>?) {
         // toda vez que tentar chamar vai dar crash no app pq esse metodo nao precisa armazenar posts quando for REMOTE
         throw UnsupportedOperationException()
     }

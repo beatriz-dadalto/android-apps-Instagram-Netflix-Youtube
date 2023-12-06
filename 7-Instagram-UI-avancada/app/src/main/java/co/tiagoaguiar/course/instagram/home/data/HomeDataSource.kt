@@ -13,7 +13,7 @@ interface HomeDataSource {
         throw UnsupportedOperationException()
     }
 
-    fun putFeed(response: List<Post>) {
+    fun putFeed(response: List<Post>?) {
         // toda vez que tentar chamar vai dar crash no app pq esse metodo nao precisa armazenar o feed quando for REMOTE
         throw UnsupportedOperationException()
     }

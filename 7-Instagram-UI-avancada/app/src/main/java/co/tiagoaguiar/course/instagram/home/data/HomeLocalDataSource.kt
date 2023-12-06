@@ -24,7 +24,7 @@ class HomeLocalDataSource(
         return Database.sessionAuth ?: throw RuntimeException("Usuário não encontrado!")
     }
 
-    override fun putFeed(response: List<Post>) {
+    override fun putFeed(response: List<Post>?) {
         feedCache.put(response)
     }
 }

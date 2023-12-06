@@ -12,6 +12,10 @@ class ProfilePresenter(
     private val repository: ProfileRepository
 ) : Profile.Presenter {
 
+    override fun clearCache() {
+        repository.clearCache()
+    }
+
     override fun fetchUserProfile() {
         view?.showProgress(true)
         val userUUID = Database.sessionAuth?.uuid ?: throw RuntimeException("user not found")
