@@ -1,5 +1,8 @@
 package co.tiagoaguiar.course.instagram.common.base
 
+import co.tiagoaguiar.course.instagram.add.data.AddFakeRemoteDataSource
+import co.tiagoaguiar.course.instagram.add.data.AddLocalDataSource
+import co.tiagoaguiar.course.instagram.add.data.AddRepository
 import co.tiagoaguiar.course.instagram.home.data.FeedMemoryCache
 import co.tiagoaguiar.course.instagram.home.data.HomeDataSourceFactory
 import co.tiagoaguiar.course.instagram.home.data.HomeRepository
@@ -35,6 +38,10 @@ object DependencyInjector {
 
     fun homeRepository(): HomeRepository {
         return HomeRepository(HomeDataSourceFactory(FeedMemoryCache))
+    }
+
+    fun addRepository(): AddRepository {
+        return AddRepository(AddFakeRemoteDataSource(), AddLocalDataSource())
     }
 
 }
