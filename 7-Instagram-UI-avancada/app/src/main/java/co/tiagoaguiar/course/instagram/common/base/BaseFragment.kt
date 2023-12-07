@@ -57,9 +57,9 @@ abstract class BaseFragment<T, P : BasePresenter>(
 
     }
 
-    abstract fun setupViews()
-
     abstract fun setupPresenter()
+
+    abstract fun setupViews()
 
     // layouts que nao precisam de menu retornara nada
     @MenuRes // passe apenas arquivos de menu
