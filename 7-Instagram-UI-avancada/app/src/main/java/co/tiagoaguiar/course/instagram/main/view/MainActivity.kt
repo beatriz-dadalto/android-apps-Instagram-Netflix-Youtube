@@ -96,6 +96,7 @@ class MainActivity : AppCompatActivity(), BottomNavigationView.OnNavigationItemS
             R.id.menu_bottom_add -> {
                 if (currentFragment == addFragment) return false
                 currentFragment = addFragment
+                scrollToolbarEnabled = false
             }
 
             R.id.menu_bottom_profile -> {
