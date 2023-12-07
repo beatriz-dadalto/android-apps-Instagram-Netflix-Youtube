@@ -7,8 +7,7 @@ import java.util.UUID
 object Database {
 
     // essas estruturas de dados são como se fossem tabelas no banco de dados
-    val usersAuth = hashSetOf<UserAuth>()
-    val photos = hashSetOf<Photo>()
+    val usersAuth = mutableListOf<UserAuth>()
     val posts = hashMapOf<String, MutableSet<Post>>() // para cada id terá uma coleção de posts
     val feeds = hashMapOf<String, MutableSet<Post>>() // para cada user terá os posts
     val followers = hashMapOf<String, Set<String>>() // um user tem N followers
@@ -19,8 +18,20 @@ object Database {
 
     // simulação de usuários
     init {
-        val userA = UserAuth(UUID.randomUUID().toString(), "UserA", "userA@gmail.com", "12345678")
-        val userB = UserAuth(UUID.randomUUID().toString(), "UserB", "userB@gmail.com", "87654321")
+        val userA = UserAuth(
+            UUID.randomUUID().toString(),
+            "UserA",
+            "userA@gmail.com",
+            "12345678",
+            Uri.fromFile(File("/storage/emulated/0/Android/media/co.tiagoaguiar.course.instagram/Instagram/2023-12-06-13-29-42-293.jpg"))
+        )
+        val userB = UserAuth(
+            UUID.randomUUID().toString(),
+            "UserB",
+            "userB@gmail.com",
+            "87654321",
+            Uri.fromFile(File("/storage/emulated/0/Android/media/co.tiagoaguiar.course.instagram/Instagram/2023-12-06-13-29-42-293.jpg"))
+        )
 
         usersAuth.add(userA)
         usersAuth.add(userB)

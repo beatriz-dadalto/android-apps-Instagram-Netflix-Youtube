@@ -116,6 +116,9 @@ class MainActivity : AppCompatActivity(), BottomNavigationView.OnNavigationItemS
 
     override fun onPostCreated() {
         homeFragment.presenter.clearCache()
+        if (supportFragmentManager.findFragmentByTag(profileFragment.javaClass.simpleName) != null) {
+            profileFragment.presenter.clearCache()
+        }
         // TODO: profile presenter clear
         binding.mainBottomNav.selectedItemId = R.id.menu_bottom_home
     }
