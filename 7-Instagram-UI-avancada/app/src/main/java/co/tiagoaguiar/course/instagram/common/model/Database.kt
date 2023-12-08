@@ -45,41 +45,47 @@ object Database {
         posts[userB.uuid] = hashSetOf()
         feeds[userB.uuid] = hashSetOf()
 
-        feeds[userA.uuid]?.addAll(
-            arrayListOf(
-                Post(
-                    UUID.randomUUID().toString(),
-                    Uri.fromFile(File("/storage/emulated/0/Android/media/co.tiagoaguiar.course.instagram/Instagram/2023-12-06-13-29-42-293.jpg")),
-                    "desc",
-                    System.currentTimeMillis(),
-                    userA
-                ),
-                Post(
-                    UUID.randomUUID().toString(),
-                    Uri.fromFile(File("/storage/emulated/0/Android/media/co.tiagoaguiar.course.instagram/Instagram/2023-12-06-13-29-42-293.jpg")),
-                    "desc",
-                    System.currentTimeMillis(),
-                    userA
-                ),
-                Post(
-                    UUID.randomUUID().toString(),
-                    Uri.fromFile(File("/storage/emulated/0/Android/media/co.tiagoaguiar.course.instagram/Instagram/2023-12-06-13-29-42-293.jpg")),
-                    "desc",
-                    System.currentTimeMillis(),
-                    userA
-                ),
-                Post(
-                    UUID.randomUUID().toString(),
-                    Uri.fromFile(File("/storage/emulated/0/Android/media/co.tiagoaguiar.course.instagram/Instagram/2023-12-06-13-29-42-293.jpg")),
-                    "desc",
-                    System.currentTimeMillis(),
-                    userA
-                )
-            )
-        )
+//        feeds[userA.uuid]?.addAll(
+//            arrayListOf(
+//                Post(
+//                    UUID.randomUUID().toString(),
+//                    Uri.fromFile(File("/storage/emulated/0/Android/media/co.tiagoaguiar.course.instagram/Instagram/2023-12-06-13-29-42-293.jpg")),
+//                    "desc",
+//                    System.currentTimeMillis(),
+//                    userA
+//                ),
+//                Post(
+//                    UUID.randomUUID().toString(),
+//                    Uri.fromFile(File("/storage/emulated/0/Android/media/co.tiagoaguiar.course.instagram/Instagram/2023-12-06-13-29-42-293.jpg")),
+//                    "desc",
+//                    System.currentTimeMillis(),
+//                    userA
+//                ),
+//                Post(
+//                    UUID.randomUUID().toString(),
+//                    Uri.fromFile(File("/storage/emulated/0/Android/media/co.tiagoaguiar.course.instagram/Instagram/2023-12-06-13-29-42-293.jpg")),
+//                    "desc",
+//                    System.currentTimeMillis(),
+//                    userA
+//                ),
+//                Post(
+//                    UUID.randomUUID().toString(),
+//                    Uri.fromFile(File("/storage/emulated/0/Android/media/co.tiagoaguiar.course.instagram/Instagram/2023-12-06-13-29-42-293.jpg")),
+//                    "desc",
+//                    System.currentTimeMillis(),
+//                    userA
+//                )
+//            )
+//        )
+//
+//        feeds[userA.uuid]?.toList()?.let {
+//            feeds[userB.uuid]?.addAll(it)
+//        }
 
-        feeds[userA.uuid]?.toList()?.let {
-            feeds[userB.uuid]?.addAll(it)
+        // users para fazer pesquisa na barra de pesquisa
+        for (i in 0..30) {
+            val user = UserAuth(UUID.randomUUID().toString(), "User$i", "user$i@gmail.com", "123123123", null)
+            usersAuth.add(user)
         }
 
         sessionAuth = usersAuth.first()
