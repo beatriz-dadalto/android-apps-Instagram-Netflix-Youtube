@@ -25,9 +25,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Instagram">
         <activity
-            android:label="@string/photo"
             android:name=".add.view.AddActivity"
-            android:exported="false" />
+            android:exported="false"
+            android:label="@string/photo" />
         <activity
             android:name=".splash.view.SplashActivity"
             android:exported="true">
@@ -40,7 +40,13 @@
         <activity
             android:name=".main.view.MainActivity"
             android:exported="false"
-            android:screenOrientation="portrait" />
+            android:screenOrientation="portrait">
+
+            <meta-data
+                android:name="android.app.appsearch"
+                android:resource="@xml/searchable" />
+
+        </activity>
         <activity
             android:name=".register.view.RegisterActivity"
             android:exported="false" />
