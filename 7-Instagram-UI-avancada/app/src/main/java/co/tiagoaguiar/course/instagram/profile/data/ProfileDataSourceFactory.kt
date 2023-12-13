@@ -8,7 +8,7 @@ import co.tiagoaguiar.course.instagram.common.model.UserAuth
     ProfileCache -> classe generica para saber qual tipo de cache que precisa fazer
  */
 class ProfileDataSourceFactory(
-    private val profileCache: Cache<UserAuth>,
+    private val profileCache: Cache<Pair<UserAuth, Boolean?>>,
     private val postsCache: Cache<List<Post>>
 ) {
 

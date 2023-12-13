@@ -1,11 +1,11 @@
 package co.tiagoaguiar.course.instagram.profile.presenter
 
 import co.tiagoaguiar.course.instagram.common.base.RequestCallback
-import co.tiagoaguiar.course.instagram.common.model.Database
 import co.tiagoaguiar.course.instagram.common.model.Post
 import co.tiagoaguiar.course.instagram.common.model.UserAuth
 import co.tiagoaguiar.course.instagram.profile.Profile
 import co.tiagoaguiar.course.instagram.profile.data.ProfileRepository
+import java.util.*
 
 class ProfilePresenter(
     private var view: Profile.View?,
@@ -18,9 +18,8 @@ class ProfilePresenter(
 
     override fun fetchUserProfile(uuid: String?) {
         view?.showProgress(true)
-        val userUUID = Database.sessionAuth?.uuid ?: throw RuntimeException("user not found")
-        repository.fetchUserProfile(uuid, object : RequestCallback<UserAuth> {
-            override fun onSuccess(data: UserAuth) {
+        repository.fetchUserProfile(uuid, object : RequestCallback<Pair<UserAuth, Boolean?>> {
+            override fun onSuccess(data: Pair<UserAuth, Boolean?>) {
                 view?.displayUserProfile(data)
             }
 

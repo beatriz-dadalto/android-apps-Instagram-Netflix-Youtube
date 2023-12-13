@@ -6,14 +6,14 @@ import co.tiagoaguiar.course.instagram.common.model.UserAuth
 
 interface ProfileDataSource {
 
-    fun fetchUserProfile(userUUID: String, callback: RequestCallback<UserAuth>)
+    fun fetchUserProfile(userUUID: String, callback: RequestCallback<Pair<UserAuth, Boolean?>>)
     fun fetchuserPosts(userUUID: String, callback: RequestCallback<List<Post>>)
     fun fetchSession(): UserAuth {
         // toda vez que tentar chamar vai dar crash no app pq esse metodo nao precisa buscar sessão quando for REMOTE
         throw UnsupportedOperationException()
     }
 
-    fun putUser(response: UserAuth) {
+    fun putUser(response: Pair<UserAuth, Boolean?>) {
         // toda vez que tentar chamar vai dar crash no app pq esse metodo nao precisa armazenar user quando for REMOTE
         throw UnsupportedOperationException()
     }

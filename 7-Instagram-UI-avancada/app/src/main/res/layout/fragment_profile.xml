@@ -95,7 +95,7 @@
                 style="@style/Theme.Instagram.Button.White"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:text="@string/edit_profile"
+                tools:text="@string/edit_profile"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toEndOf="@id/profile_img_icon"
                 app:layout_constraintTop_toBottomOf="@id/profile_txt_posts" />

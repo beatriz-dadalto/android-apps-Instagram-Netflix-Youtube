@@ -7,10 +7,13 @@ import co.tiagoaguiar.course.instagram.common.model.Post
 import co.tiagoaguiar.course.instagram.common.model.UserAuth
 
 class ProfileLocalDataSource(
-    private val profileCache: Cache<UserAuth>,
+    private val profileCache: Cache<Pair<UserAuth, Boolean?>>,
     private val postsCache: Cache<List<Post>>
 ) : ProfileDataSource {
-    override fun fetchUserProfile(userUUID: String, callback: RequestCallback<UserAuth>) {
+    override fun fetchUserProfile(
+        userUUID: String,
+        callback: RequestCallback<Pair<UserAuth, Boolean?>>
+    ) {
         val userAuth = profileCache.get(userUUID)
         if (userAuth != null) {
             callback.onSuccess(userAuth)
@@ -34,7 +37,7 @@ class ProfileLocalDataSource(
         return Database.sessionAuth ?: throw RuntimeException("Usuário não encontrado!")
     }
 
-    override fun putUser(response: UserAuth) {
+    override fun putUser(response: Pair<UserAuth, Boolean?>) {
         profileCache.put(response)
     }
 

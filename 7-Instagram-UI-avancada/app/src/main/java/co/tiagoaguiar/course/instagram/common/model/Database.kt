@@ -10,7 +10,7 @@ object Database {
     val usersAuth = mutableListOf<UserAuth>()
     val posts = hashMapOf<String, MutableSet<Post>>() // para cada id terá uma coleção de posts
     val feeds = hashMapOf<String, MutableSet<Post>>() // para cada user terá os posts
-    val followers = hashMapOf<String, Set<String>>() // um user tem N followers
+    val followers = hashMapOf<String, MutableSet<String>>() // um user tem N followers
 
     // uma vez autenticado guarda a referencia para utilizar no app quando precisar
     var sessionAuth: UserAuth? = null
@@ -84,10 +84,18 @@ object Database {
 
         // users para fazer pesquisa na barra de pesquisa
         for (i in 0..30) {
-            val user = UserAuth(UUID.randomUUID().toString(), "User$i", "user$i@gmail.com", "123123123", null)
+            val user = UserAuth(
+                UUID.randomUUID().toString(),
+                "User$i",
+                "user$i@gmail.com",
+                "123123123",
+                null
+            )
             usersAuth.add(user)
         }
 
         sessionAuth = usersAuth.first()
+
+        followers[sessionAuth!!.uuid]?.add(usersAuth[2].uuid)
     }
 }
