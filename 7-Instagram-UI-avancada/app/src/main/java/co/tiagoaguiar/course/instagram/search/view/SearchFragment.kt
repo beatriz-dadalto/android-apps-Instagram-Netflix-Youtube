@@ -22,7 +22,21 @@ class SearchFragment : BaseFragment<FragmentSearchBinding, Search.Presenter>(
 
     override lateinit var presenter: Search.Presenter
 
-    private val adapter = SearchAdapter()
+    private val adapter by lazy { SearchAdapter(onItemClicked) }
+
+    private val onItemClicked: (String) -> Unit = { uuid ->
+        // depois do click
+        searchListener?.goToProfile(uuid)
+    }
+
+    private var searchListener: SearchListener? = null
+
+    override fun onAttach(context: Context) {
+        super.onAttach(context)
+        if (context is SearchListener) {
+            searchListener = context
+        }
+    }
 
     override fun setupPresenter() {
         val repository = DependencyInjector.searchRepository()
@@ -77,5 +91,9 @@ class SearchFragment : BaseFragment<FragmentSearchBinding, Search.Presenter>(
     override fun displayEmptyUsers() {
         binding?.searchTxtEmpty?.visibility = View.VISIBLE
         binding?.searchRv?.visibility = View.GONE
+    }
+
+    interface SearchListener {
+        fun goToProfile(uuid: String)
     }
 }

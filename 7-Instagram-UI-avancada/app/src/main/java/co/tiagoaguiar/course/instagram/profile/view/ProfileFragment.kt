@@ -23,6 +23,7 @@ class ProfileFragment : BaseFragment<FragmentProfileBinding, Profile.Presenter>(
     override lateinit var presenter: Profile.Presenter
 
     private val adapter = PostAdapter()
+    private var uuid: String? = null
 
     override fun setupPresenter() {
         val repository = DependencyInjector.profileRepository()
@@ -30,11 +31,12 @@ class ProfileFragment : BaseFragment<FragmentProfileBinding, Profile.Presenter>(
     }
 
     override fun setupViews() {
+        uuid = arguments?.getString(KEY_USER_ID)
         binding?.profileRv?.layoutManager = GridLayoutManager(requireContext(), 3)
         binding?.profileRv?.adapter = adapter
         binding?.profileNavTabs?.setOnNavigationItemSelectedListener(this)
 
-        presenter.fetchUserProfile()
+        presenter.fetchUserProfile(uuid)
     }
 
     override fun showProgress(enabled: Boolean) {
@@ -48,7 +50,8 @@ class ProfileFragment : BaseFragment<FragmentProfileBinding, Profile.Presenter>(
         binding?.profileTxtUsername?.text = userAuth.name
         binding?.profileTxtBio?.text = "TODO"
         binding?.profileImgIcon?.setImageURI(userAuth.photoUri)
-        presenter.fetchUserPosts()
+
+        presenter.fetchUserPosts(uuid)
     }
 
     override fun displayRequestFailure(message: String) {
@@ -81,6 +84,10 @@ class ProfileFragment : BaseFragment<FragmentProfileBinding, Profile.Presenter>(
             }
         }
         return true
+    }
+
+    companion object {
+        const val KEY_USER_ID = "key_user_id"
     }
 
 }

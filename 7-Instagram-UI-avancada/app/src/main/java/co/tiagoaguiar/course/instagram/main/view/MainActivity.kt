@@ -3,6 +3,7 @@ package co.tiagoaguiar.course.instagram.main.view
 import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.view.MenuItem
 import android.view.WindowInsetsController
 import androidx.annotation.RequiresApi
@@ -19,7 +20,8 @@ import co.tiagoaguiar.course.instagram.search.view.SearchFragment
 import com.google.android.material.appbar.AppBarLayout
 import com.google.android.material.bottomnavigation.BottomNavigationView
 
-class MainActivity : AppCompatActivity(), BottomNavigationView.OnNavigationItemSelectedListener,  AddFragment.AddListener{
+class MainActivity : AppCompatActivity(), BottomNavigationView.OnNavigationItemSelectedListener,
+    AddFragment.AddListener, SearchFragment.SearchListener {
 
     private lateinit var binding: ActivityMainBinding
 
@@ -78,6 +80,19 @@ class MainActivity : AppCompatActivity(), BottomNavigationView.OnNavigationItemS
         binding.mainAppbar.layoutParams = coordinatParams
     }
 
+    override fun goToProfile(uuid: String) {
+        val fragment = ProfileFragment().apply {
+            arguments = Bundle().apply {
+                putString(ProfileFragment.KEY_USER_ID, uuid)
+            }
+        }
+        supportFragmentManager.beginTransaction().apply {
+            replace(R.id.main_fragment, fragment, fragment.javaClass.simpleName + "detail")
+            addToBackStack(null)
+            commit()
+        }
+    }
+
     override fun onNavigationItemSelected(item: MenuItem): Boolean {
         var scrollToolbarEnabled = false
 
@@ -91,6 +106,7 @@ class MainActivity : AppCompatActivity(), BottomNavigationView.OnNavigationItemS
             R.id.menu_bottom_search -> {
                 if (currentFragment == searchFragment) return false
                 currentFragment = searchFragment
+                scrollToolbarEnabled = false
             }
 
             R.id.menu_bottom_add -> {
