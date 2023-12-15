@@ -34,4 +34,8 @@ class ProfileDataSourceFactory(
         }
         return ProfileFakeRemoteDataSource()
     }
+
+    fun createRemoteDataSource(): ProfileDataSource {
+        return ProfileFakeRemoteDataSource()
+    }
 }

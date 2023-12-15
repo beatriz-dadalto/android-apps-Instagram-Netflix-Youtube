@@ -1,4 +1,4 @@
-package co.tiagoaguiar.course.instagram.login.presentation
+package co.tiagoaguiar.course.instagram.login.presenter
 
 import android.util.Patterns
 import co.tiagoaguiar.course.instagram.R

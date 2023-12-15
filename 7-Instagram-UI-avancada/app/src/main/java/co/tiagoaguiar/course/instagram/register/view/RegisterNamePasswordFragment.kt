@@ -10,7 +10,7 @@ import co.tiagoaguiar.course.instagram.common.base.DependencyInjector
 import co.tiagoaguiar.course.instagram.common.util.TxtWatcher
 import co.tiagoaguiar.course.instagram.databinding.FragmentRegisterNamePasswordBinding
 import co.tiagoaguiar.course.instagram.register.RegisterNameAndPassword
-import co.tiagoaguiar.course.instagram.register.presentation.RegisterNameAndPasswordPresenter
+import co.tiagoaguiar.course.instagram.register.presenter.RegisterNameAndPasswordPresenter
 import java.lang.IllegalArgumentException
 
 class RegisterNamePasswordFragment : Fragment(R.layout.fragment_register_name_password),

@@ -9,7 +9,7 @@ import co.tiagoaguiar.course.instagram.common.base.DependencyInjector
 import co.tiagoaguiar.course.instagram.common.util.TxtWatcher
 import co.tiagoaguiar.course.instagram.databinding.FragmentRegisterEmailBinding
 import co.tiagoaguiar.course.instagram.register.RegisterEmail
-import co.tiagoaguiar.course.instagram.register.presentation.RegisterEmailPresenter
+import co.tiagoaguiar.course.instagram.register.presenter.RegisterEmailPresenter
 
 class RegisterEmailFragment : Fragment(R.layout.fragment_register_email), RegisterEmail.View {
 

@@ -6,7 +6,6 @@ import android.net.Uri
 import android.os.Build
 import android.os.Bundle
 import android.provider.MediaStore
-import android.util.Log
 import android.view.View
 import android.widget.Toast
 import androidx.fragment.app.Fragment
@@ -17,7 +16,7 @@ import co.tiagoaguiar.course.instagram.common.view.CropperImageFragment
 import co.tiagoaguiar.course.instagram.common.view.CustomDialog
 import co.tiagoaguiar.course.instagram.databinding.FragmentRegisterPhotoBinding
 import co.tiagoaguiar.course.instagram.register.RegisterPhoto
-import co.tiagoaguiar.course.instagram.register.presentation.RegisterPhotoPresenter
+import co.tiagoaguiar.course.instagram.register.presenter.RegisterPhotoPresenter
 
 class RegisterPhotoFragment : Fragment(R.layout.fragment_register_photo), RegisterPhoto.View {
 

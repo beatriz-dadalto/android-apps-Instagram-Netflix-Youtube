@@ -1,8 +1,6 @@
-package co.tiagoaguiar.course.instagram.register.presentation
+package co.tiagoaguiar.course.instagram.register.presenter
 
 import android.net.Uri
-import co.tiagoaguiar.course.instagram.R
-import co.tiagoaguiar.course.instagram.register.RegisterNameAndPassword
 import co.tiagoaguiar.course.instagram.register.RegisterPhoto
 import co.tiagoaguiar.course.instagram.register.data.RegisterCallback
 import co.tiagoaguiar.course.instagram.register.data.RegisterRepository

@@ -1,4 +1,4 @@
-package co.tiagoaguiar.course.instagram.register.presentation
+package co.tiagoaguiar.course.instagram.register.presenter
 
 import co.tiagoaguiar.course.instagram.R
 import co.tiagoaguiar.course.instagram.register.RegisterNameAndPassword

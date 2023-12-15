@@ -10,7 +10,7 @@ import android.widget.Toast
 import androidx.core.content.ContextCompat
 import co.tiagoaguiar.course.instagram.R
 import co.tiagoaguiar.course.instagram.add.Add
-import co.tiagoaguiar.course.instagram.add.presentation.AddPresenter
+import co.tiagoaguiar.course.instagram.add.presenter.AddPresenter
 import co.tiagoaguiar.course.instagram.common.base.DependencyInjector
 import co.tiagoaguiar.course.instagram.databinding.ActivityAddBinding
 import java.lang.RuntimeException

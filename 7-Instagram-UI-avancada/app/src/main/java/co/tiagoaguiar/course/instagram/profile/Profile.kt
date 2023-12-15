@@ -10,6 +10,7 @@ interface Profile {
     interface Presenter : BasePresenter {
         fun fetchUserProfile(uuid: String?) // quando nao for null vem da barra de pesquisa
         fun fetchUserPosts(uuid: String?)
+        fun followUser(uuid: String?, follow: Boolean)
         fun clearCache()
     }
 

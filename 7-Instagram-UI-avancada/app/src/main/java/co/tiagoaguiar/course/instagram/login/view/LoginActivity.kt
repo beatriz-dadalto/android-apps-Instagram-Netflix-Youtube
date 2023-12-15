@@ -8,9 +8,7 @@ import co.tiagoaguiar.course.instagram.common.base.DependencyInjector
 import co.tiagoaguiar.course.instagram.common.util.TxtWatcher
 import co.tiagoaguiar.course.instagram.databinding.ActivityLoginBinding
 import co.tiagoaguiar.course.instagram.login.Login
-import co.tiagoaguiar.course.instagram.login.data.FakeDataSource
-import co.tiagoaguiar.course.instagram.login.data.LoginRepository
-import co.tiagoaguiar.course.instagram.login.presentation.LoginPresenter
+import co.tiagoaguiar.course.instagram.login.presenter.LoginPresenter
 import co.tiagoaguiar.course.instagram.main.view.MainActivity
 import co.tiagoaguiar.course.instagram.register.view.RegisterActivity
 

@@ -1,4 +1,4 @@
-package co.tiagoaguiar.course.instagram.add.presentation
+package co.tiagoaguiar.course.instagram.add.presenter
 
 import android.net.Uri
 import co.tiagoaguiar.course.instagram.add.Add
