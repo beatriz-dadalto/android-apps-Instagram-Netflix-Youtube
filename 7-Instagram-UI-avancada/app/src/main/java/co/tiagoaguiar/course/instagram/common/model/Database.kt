@@ -25,25 +25,25 @@ object Database {
             "12345678",
             Uri.fromFile(File("/storage/emulated/0/Android/media/co.tiagoaguiar.course.instagram/Instagram/2023-12-06-13-29-42-293.jpg"))
         )
-        val userB = UserAuth(
-            UUID.randomUUID().toString(),
-            "UserB",
-            "userB@gmail.com",
-            "87654321",
-            Uri.fromFile(File("/storage/emulated/0/Android/media/co.tiagoaguiar.course.instagram/Instagram/2023-12-06-13-29-42-293.jpg"))
-        )
-
-        usersAuth.add(userA)
-        usersAuth.add(userB)
-
-        // criando as tabelas
-        followers[userA.uuid] = hashSetOf()
-        posts[userA.uuid] = hashSetOf()
-        feeds[userA.uuid] = hashSetOf()
-
-        followers[userB.uuid] = hashSetOf()
-        posts[userB.uuid] = hashSetOf()
-        feeds[userB.uuid] = hashSetOf()
+//        val userB = UserAuth(
+//            UUID.randomUUID().toString(),
+//            "UserB",
+//            "userB@gmail.com",
+//            "87654321",
+//            Uri.fromFile(File("/storage/emulated/0/Android/media/co.tiagoaguiar.course.instagram/Instagram/2023-12-06-13-29-42-293.jpg"))
+//        )
+//
+//        usersAuth.add(userA)
+//        usersAuth.add(userB)
+//
+//        // criando as tabelas
+//        followers[userA.uuid] = hashSetOf()
+//        posts[userA.uuid] = hashSetOf()
+//        feeds[userA.uuid] = hashSetOf()
+//
+//        followers[userB.uuid] = hashSetOf()
+//        posts[userB.uuid] = hashSetOf()
+//        feeds[userB.uuid] = hashSetOf()
 
 //        feeds[userA.uuid]?.addAll(
 //            arrayListOf(
@@ -94,7 +94,7 @@ object Database {
             usersAuth.add(user)
         }
 
-        // sessionAuth = usersAuth.first()
+         sessionAuth = usersAuth.first()
 
         // followers[sessionAuth!!.uuid]?.add(usersAuth[2].uuid)
     }

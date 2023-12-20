@@ -18,7 +18,7 @@ class HomeDataSourceFactory(
         return if (feedCache.isCached()) {
             HomeLocalDataSource(feedCache)
         } else {
-            HomeFakeRemoteDataSource()
+            FirebaseHomeDataSource()
         }
     }
 
