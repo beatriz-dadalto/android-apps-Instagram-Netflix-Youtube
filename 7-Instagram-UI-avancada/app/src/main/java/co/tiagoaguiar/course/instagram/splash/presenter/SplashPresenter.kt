@@ -1,4 +1,4 @@
-package co.tiagoaguiar.course.instagram.splash.presentation
+package co.tiagoaguiar.course.instagram.splash.presenter
 
 import co.tiagoaguiar.course.instagram.splash.Splash
 import co.tiagoaguiar.course.instagram.splash.data.SplashCallback

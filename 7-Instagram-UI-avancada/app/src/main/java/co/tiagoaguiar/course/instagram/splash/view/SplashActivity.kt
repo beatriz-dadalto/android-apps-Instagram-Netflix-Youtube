@@ -9,7 +9,7 @@ import co.tiagoaguiar.course.instagram.databinding.ActivitySplashBinding
 import co.tiagoaguiar.course.instagram.login.view.LoginActivity
 import co.tiagoaguiar.course.instagram.main.view.MainActivity
 import co.tiagoaguiar.course.instagram.splash.Splash
-import co.tiagoaguiar.course.instagram.splash.presentation.SplashPresenter
+import co.tiagoaguiar.course.instagram.splash.presenter.SplashPresenter
 
 class SplashActivity : AppCompatActivity(), Splash.View {
 
