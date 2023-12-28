@@ -10,6 +10,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import co.tiagoaguiar.course.instagram.R
 import co.tiagoaguiar.course.instagram.common.base.BaseFragment
 import co.tiagoaguiar.course.instagram.common.base.DependencyInjector
+import co.tiagoaguiar.course.instagram.common.model.User
 import co.tiagoaguiar.course.instagram.common.model.UserAuth
 import co.tiagoaguiar.course.instagram.databinding.FragmentSearchBinding
 import co.tiagoaguiar.course.instagram.search.Search
@@ -81,7 +82,7 @@ class SearchFragment : BaseFragment<FragmentSearchBinding, Search.Presenter>(
         binding?.searchProgress?.visibility = if (enabled) View.VISIBLE else View.GONE
     }
 
-    override fun displayFullUsers(users: List<UserAuth>) {
+    override fun displayFullUsers(users: List<User>) {
         binding?.searchTxtEmpty?.visibility = View.GONE
         binding?.searchRv?.visibility = View.VISIBLE
         adapter.items = users
