@@ -2,6 +2,7 @@ package co.tiagoaguiar.course.instagram.profile.presenter
 
 import co.tiagoaguiar.course.instagram.common.base.RequestCallback
 import co.tiagoaguiar.course.instagram.common.model.Post
+import co.tiagoaguiar.course.instagram.common.model.User
 import co.tiagoaguiar.course.instagram.common.model.UserAuth
 import co.tiagoaguiar.course.instagram.profile.Profile
 import co.tiagoaguiar.course.instagram.profile.data.ProfileRepository
@@ -18,8 +19,8 @@ class ProfilePresenter(
 
     override fun fetchUserProfile(uuid: String?) {
         view?.showProgress(true)
-        repository.fetchUserProfile(uuid, object : RequestCallback<Pair<UserAuth, Boolean?>> {
-            override fun onSuccess(data: Pair<UserAuth, Boolean?>) {
+        repository.fetchUserProfile(uuid, object : RequestCallback<Pair<User, Boolean?>> {
+            override fun onSuccess(data: Pair<User, Boolean?>) {
                 view?.displayUserProfile(data)
             }
 

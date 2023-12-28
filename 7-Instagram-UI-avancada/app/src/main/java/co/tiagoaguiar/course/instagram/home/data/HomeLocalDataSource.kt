@@ -5,6 +5,7 @@ import co.tiagoaguiar.course.instagram.common.base.RequestCallback
 import co.tiagoaguiar.course.instagram.common.model.Database
 import co.tiagoaguiar.course.instagram.common.model.Post
 import co.tiagoaguiar.course.instagram.common.model.UserAuth
+import com.google.firebase.auth.FirebaseAuth
 
 class HomeLocalDataSource(
     private val feedCache: Cache<List<Post>>
@@ -20,8 +21,8 @@ class HomeLocalDataSource(
         callback.onComplete()
     }
 
-    override fun fetchSession(): UserAuth {
-        return Database.sessionAuth ?: throw RuntimeException("Usuário não encontrado!")
+    override fun fetchSession(): String {
+        return FirebaseAuth.getInstance().uid ?: throw RuntimeException("Usuário não encontrado!")
     }
 
     override fun putFeed(response: List<Post>?) {
