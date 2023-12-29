@@ -8,46 +8,43 @@ import co.tiagoaguiar.course.instagram.common.model.Post
 import co.tiagoaguiar.course.instagram.common.model.User
 
 class ProfileFakeRemoteDataSource : ProfileDataSource {
-    override fun fetchUserProfile(
-        userUUID: String,
-        callback: RequestCallback<Pair<User, Boolean?>>
-    ) {
+    override fun fetchUserProfile(userUUID: String, callback: RequestCallback<Pair<User, Boolean?>>) {
         Handler(Looper.getMainLooper()).postDelayed({
+
             val userAuth = Database.usersAuth.firstOrNull { userUUID == it.uuid }
 
             if (userAuth != null) {
                 if (userAuth == Database.sessionAuth) {
-                    //callback.onSuccess(Pair(userAuth, null))
+                    // TODO: remover essa classe callback.onSuccess(Pair(userAuth, null))
                 } else {
-                    // buscando um user do perfil
                     val followings = Database.followers[Database.sessionAuth!!.uuid]
-                    // destinyUser != null = estou seguindo
-                    val destinyUser = followings?.firstOrNull { it == userUUID }
 
-                    val following = destinyUser != null
-                    //callback.onSuccess(Pair(userAuth, following))
+                    val destUser = followings?.firstOrNull { it == userUUID }
+                    // destUser != null > Estou seguindo
+
+                    // TODO: remover essa classe callback.onSuccess(Pair(userAuth, destUser != null))
                 }
+
             } else {
-                callback.onFailure("usuário não encontrado")
+                callback.onFailure("Usuário não encontrado")
             }
 
             callback.onComplete()
         }, 2000)
     }
 
-    override fun fetchuserPosts(userUUID: String, callback: RequestCallback<List<Post>>) {
+    override fun fetchUserPosts(userUUID: String, callback: RequestCallback<List<Post>>) {
         Handler(Looper.getMainLooper()).postDelayed({
+
             val posts = Database.posts[userUUID]
+
             callback.onSuccess(posts?.toList() ?: emptyList())
+
             callback.onComplete()
         }, 2000)
     }
 
-    override fun followUser(
-        userUUID: String,
-        isFollow: Boolean,
-        callback: RequestCallback<Boolean>
-    ) {
+    override fun followUser(userUUID: String, isFollow: Boolean, callback: RequestCallback<Boolean>) {
         Handler(Looper.getMainLooper()).postDelayed({
             var followers = Database.followers[Database.sessionAuth!!.uuid]
 
@@ -64,7 +61,7 @@ class ProfileFakeRemoteDataSource : ProfileDataSource {
 
             callback.onSuccess(true)
             callback.onComplete()
+
         }, 500)
     }
-
 }

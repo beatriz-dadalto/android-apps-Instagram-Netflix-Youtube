@@ -10,7 +10,6 @@ import java.lang.RuntimeException
 class FirebaseHomeDataSource : HomeDataSource {
 
   override fun fetchFeed(userUUID: String, callback: RequestCallback<List<Post>>) {
-
     val uid = FirebaseAuth.getInstance().uid ?: throw RuntimeException("Usuário não encontrado")
     FirebaseFirestore.getInstance()
       .collection("/feeds") // [ varios feeds ]
@@ -33,5 +32,6 @@ class FirebaseHomeDataSource : HomeDataSource {
       .addOnCompleteListener {
         callback.onComplete()
       }
+
   }
 }

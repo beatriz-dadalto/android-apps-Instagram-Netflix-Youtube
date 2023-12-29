@@ -26,36 +26,36 @@ import co.tiagoaguiar.course.instagram.splash.data.SplashRepository
 
 object DependencyInjector {
 
-    fun splashRepository(): SplashRepository {
-        return SplashRepository(FirebaseSplashDataSource())
-    }
+  fun splashRepository(): SplashRepository {
+    return SplashRepository(FirebaseSplashDataSource())
+  }
 
-    fun loginRepository(): LoginRepository {
-        return LoginRepository(FirebaseLoginDataSource())
-    }
+  fun loginRepository(): LoginRepository {
+    return LoginRepository(FirebaseLoginDataSource())
+  }
 
-    fun registerEmailRepository(): RegisterRepository {
-        return RegisterRepository(FirebaseRegisterDataSource())
-    }
+  fun registerEmailRepository(): RegisterRepository {
+    return RegisterRepository(FirebaseRegisterDataSource())
+  }
 
-    fun searchRepository(): SearchRepository {
-        return SearchRepository(FirebaseSearchDataSource())
-    }
+  fun searchRepository(): SearchRepository {
+    return SearchRepository(FirebaseSearchDataSource())
+  }
 
-    fun profileRepository(): ProfileRepository {
-        return ProfileRepository(ProfileDataSourceFactory(ProfileMemoryCache, PostListMemoryCache))
-    }
+  fun profileRepository(): ProfileRepository {
+    return ProfileRepository(ProfileDataSourceFactory(ProfileMemoryCache, PostListMemoryCache))
+  }
 
-    fun homeRepository(): HomeRepository {
-        return HomeRepository(HomeDataSourceFactory(FeedMemoryCache))
-    }
+  fun homeRepository(): HomeRepository {
+    return HomeRepository(HomeDataSourceFactory(FeedMemoryCache))
+  }
 
-    fun addRepository(): AddRepository {
-        return AddRepository(FirebaseAddDataSource(), AddLocalDataSource())
-    }
+  fun addRepository(): AddRepository {
+    return AddRepository(FirebaseAddDataSource(), AddLocalDataSource())
+  }
 
-    fun postRepository(context: Context): PostRepository {
-        return PostRepository(PostLocalDataSource(context))
-    }
+  fun postRepository(context: Context): PostRepository {
+    return PostRepository(PostLocalDataSource(context))
+  }
 
 }
