@@ -24,7 +24,7 @@ import com.google.android.material.appbar.AppBarLayout
 import com.google.android.material.bottomnavigation.BottomNavigationView
 
 class MainActivity : AppCompatActivity(), BottomNavigationView.OnNavigationItemSelectedListener,
-    AddFragment.AddListener, SearchFragment.SearchListener, LogoutListener {
+    AddFragment.AddListener, SearchFragment.SearchListener, LogoutListener, ProfileFragment.FollowListener {
 
     private lateinit var binding: ActivityMainBinding
 
@@ -93,6 +93,13 @@ class MainActivity : AppCompatActivity(), BottomNavigationView.OnNavigationItemS
             replace(R.id.main_fragment, fragment, fragment.javaClass.simpleName + "detail")
             addToBackStack(null)
             commit()
+        }
+    }
+
+    override fun followUpdated() {
+        homeFragment.presenter.clearCache()
+        if (supportFragmentManager.findFragmentByTag(profileFragment.javaClass.simpleName) != null) {
+            profileFragment.presenter.clearCache()
         }
     }
 
