@@ -19,7 +19,7 @@ interface ProfileDataSource {
         throw UnsupportedOperationException()
     }
 
-    fun putUser(response: Pair<User, Boolean?>) {
+    fun putUser(response: Pair<User, Boolean?>?) {
         // toda vez que tentar chamar vai dar crash no app pq esse metodo nao precisa armazenar user quando for REMOTE
         throw UnsupportedOperationException()
     }
