@@ -7,19 +7,23 @@ import co.tiagoaguiar.course.instagram.common.model.Post
     Cache -> classe generica para saber qual tipo de cache que precisa fazer
  */
 class HomeDataSourceFactory(
-    private val feedCache: Cache<List<Post>>
+   private val feedCache: Cache<List<Post>>
 ) {
 
-    fun createLocalDataSource(): HomeDataSource {
-        return HomeLocalDataSource(feedCache)
-    }
+   fun createLocalDataSource(): HomeDataSource {
+      return HomeLocalDataSource(feedCache)
+   }
 
-    fun createFromFeed(): HomeDataSource {
-        return if (feedCache.isCached()) {
-            HomeLocalDataSource(feedCache)
-        } else {
-            FirebaseHomeDataSource()
-        }
-    }
+   fun createRemoteDataSource(): HomeDataSource {
+      return FirebaseHomeDataSource()
+   }
+
+   fun createFromFeed(): HomeDataSource {
+      return if (feedCache.isCached()) {
+         HomeLocalDataSource(feedCache)
+      } else {
+         FirebaseHomeDataSource()
+      }
+   }
 
 }

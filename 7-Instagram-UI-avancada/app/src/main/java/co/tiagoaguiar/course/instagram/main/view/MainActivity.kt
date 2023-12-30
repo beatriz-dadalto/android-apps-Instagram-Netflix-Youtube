@@ -1,5 +1,6 @@
 package co.tiagoaguiar.course.instagram.main.view
 
+import android.content.Intent
 import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -15,13 +16,15 @@ import co.tiagoaguiar.course.instagram.post.view.AddFragment
 import co.tiagoaguiar.course.instagram.common.extension.replaceFragment
 import co.tiagoaguiar.course.instagram.databinding.ActivityMainBinding
 import co.tiagoaguiar.course.instagram.home.view.HomeFragment
+import co.tiagoaguiar.course.instagram.main.LogoutListener
 import co.tiagoaguiar.course.instagram.profile.view.ProfileFragment
 import co.tiagoaguiar.course.instagram.search.view.SearchFragment
+import co.tiagoaguiar.course.instagram.splash.view.SplashActivity
 import com.google.android.material.appbar.AppBarLayout
 import com.google.android.material.bottomnavigation.BottomNavigationView
 
 class MainActivity : AppCompatActivity(), BottomNavigationView.OnNavigationItemSelectedListener,
-    AddFragment.AddListener, SearchFragment.SearchListener {
+    AddFragment.AddListener, SearchFragment.SearchListener, LogoutListener {
 
     private lateinit var binding: ActivityMainBinding
 
@@ -93,6 +96,20 @@ class MainActivity : AppCompatActivity(), BottomNavigationView.OnNavigationItemS
         }
     }
 
+    override fun logout() {
+        if (supportFragmentManager.findFragmentByTag(profileFragment.javaClass.simpleName) != null) {
+            profileFragment.presenter.clearCache()
+        }
+
+        homeFragment.presenter.clearCache()
+        homeFragment.presenter.logout()
+
+        val intent = Intent(baseContext, SplashActivity::class.java)
+        intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK
+        startActivity(intent)
+        overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out)
+    }
+
     override fun onNavigationItemSelected(item: MenuItem): Boolean {
         var scrollToolbarEnabled = false
 
@@ -136,7 +153,6 @@ class MainActivity : AppCompatActivity(), BottomNavigationView.OnNavigationItemS
         if (supportFragmentManager.findFragmentByTag(profileFragment.javaClass.simpleName) != null) {
             profileFragment.presenter.clearCache()
         }
-        // TODO: profile presenter clear
         binding.mainBottomNav.selectedItemId = R.id.menu_bottom_home
     }
 }
