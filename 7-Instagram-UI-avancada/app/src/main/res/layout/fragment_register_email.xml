@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/white">
+    android:background="?colorOnPrimary">
 
     <ScrollView
         android:layout_width="match_parent"
@@ -22,6 +22,7 @@
             android:paddingBottom="70dp">
 
             <ImageView
+                android:id="@+id/register_img_logo"
                 android:layout_width="150dp"
                 android:layout_height="150dp"
                 android:layout_gravity="center"
@@ -65,11 +66,11 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="0dp"
         android:layout_marginEnd="0dp"
-        android:background="@color/white"
+        android:background="?colorOnPrimary"
         android:padding="24dp"
         android:text="@string/already_has_account"
         android:textAlignment="center"
-        android:textColor="@color/black"
+        android:textColor="?colorPrimary"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />

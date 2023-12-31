@@ -17,9 +17,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:layout_constraintBottom_toBottomOf="parent"
-
-        app:tabIndicatorColor="@color/black"
-        app:tabSelectedTextColor="@color/black"
+        app:tabIndicatorColor="?colorPrimary"
+        app:tabSelectedTextColor="?colorPrimary"
         app:tabTextColor="@color/gray_text" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

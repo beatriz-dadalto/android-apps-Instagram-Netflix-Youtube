@@ -1,9 +1,15 @@
 package co.tiagoaguiar.course.instagram.login.view
 
 import android.content.Intent
+import android.content.res.ColorStateList
+import android.content.res.Configuration
+import android.graphics.Color
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.WindowInsetsController
 import android.widget.Toast
+import androidx.core.content.ContextCompat
+import co.tiagoaguiar.course.instagram.R
 import co.tiagoaguiar.course.instagram.common.base.DependencyInjector
 import co.tiagoaguiar.course.instagram.common.util.TxtWatcher
 import co.tiagoaguiar.course.instagram.databinding.ActivityLoginBinding
@@ -30,6 +36,17 @@ class LoginActivity : AppCompatActivity(), Login.View {
 
         // forma enxuta. desse jeito não preciso colocar binding em todos elementos xml da tela
         with(binding) {
+            when (resources?.configuration?.uiMode?.and(Configuration.UI_MODE_NIGHT_MASK)) {
+                Configuration.UI_MODE_NIGHT_YES -> {
+                    // dark mode
+                    loginImgLogo.imageTintList = ColorStateList.valueOf(Color.WHITE)
+                }
+                Configuration.UI_MODE_NIGHT_NO -> {
+                    // light mode
+
+                }
+            }
+
             loginEditEmail.addTextChangedListener(isEmpty)
             loginEditEmail.addTextChangedListener(TxtWatcher {
                 displayEmailFailure(null)
