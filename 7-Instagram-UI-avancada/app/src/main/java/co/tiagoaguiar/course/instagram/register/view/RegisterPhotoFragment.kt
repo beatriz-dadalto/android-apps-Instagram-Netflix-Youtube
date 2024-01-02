@@ -5,6 +5,7 @@ import android.content.res.ColorStateList
 import android.content.res.Configuration
 import android.graphics.Color
 import android.graphics.ImageDecoder
+import android.graphics.PorterDuff
 import android.net.Uri
 import android.os.Build
 import android.os.Bundle
@@ -57,7 +58,7 @@ class RegisterPhotoFragment : Fragment(R.layout.fragment_register_photo), Regist
                 when (resources?.configuration?.uiMode?.and(Configuration.UI_MODE_NIGHT_MASK)) {
                     Configuration.UI_MODE_NIGHT_YES -> {
                         // dark mode
-                        registerImageProfile.imageTintList = ColorStateList.valueOf(Color.WHITE)
+                        registerImageProfile.setColorFilter(Color.WHITE, PorterDuff.Mode.SRC_IN)
                     }
                     Configuration.UI_MODE_NIGHT_NO -> {
                         // light mode
@@ -74,7 +75,6 @@ class RegisterPhotoFragment : Fragment(R.layout.fragment_register_photo), Regist
                 }
             }
         }
-
     }
 
     override fun onAttach(context: Context) {
@@ -121,6 +121,7 @@ class RegisterPhotoFragment : Fragment(R.layout.fragment_register_photo), Regist
                 MediaStore.Images.Media.getBitmap(requireContext().contentResolver, uri)
             }
             binding?.registerImageProfile?.setImageBitmap(bitmap)
+            binding?.registerImageProfile?.clearColorFilter()
             presenter.updateUser(uri)
         }
     }

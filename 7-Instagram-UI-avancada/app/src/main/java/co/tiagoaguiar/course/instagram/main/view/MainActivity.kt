@@ -51,6 +51,7 @@ class MainActivity : AppCompatActivity(), BottomNavigationView.OnNavigationItemS
                     // dark mode
                     window.statusBarColor = ContextCompat.getColor(this, R.color.black)
                     binding.mainImgLogo.imageTintList = ColorStateList.valueOf(Color.WHITE)
+                    binding.mainBottomNav.backgroundTintList = ColorStateList.valueOf(Color.BLACK)
                 }
                 Configuration.UI_MODE_NIGHT_NO -> {
                     // light mode

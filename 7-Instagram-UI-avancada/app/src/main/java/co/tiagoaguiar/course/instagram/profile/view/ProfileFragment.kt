@@ -92,8 +92,10 @@ class ProfileFragment : BaseFragment<FragmentProfileBinding, Profile.Presenter>(
         binding?.profileTxtUsername?.text = userAuth.name
         binding?.profileTxtBio?.text = "TODO"
 
-        binding?.let {
-            Glide.with(requireContext()).load(userAuth.photoUrl).into(it.profileImgIcon)
+        binding?.profileImgIcon?.let {
+            if(userAuth.photoUrl != null) {
+                Glide.with(requireContext()).load(userAuth.photoUrl).into(it)
+            }
         }
 
         binding?.profileBtnEditProfile?.text = when (following) {
