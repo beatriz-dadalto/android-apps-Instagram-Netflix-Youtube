@@ -2,9 +2,9 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_marginBottom="8dp"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="8dp">
 
     <androidx.appcompat.widget.AppCompatImageView
         android:id="@+id/video_thumbnail"
@@ -32,23 +32,26 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="10dp"
+        android:layout_marginEnd="4dp"
         android:maxLines="2"
         android:textColor="@android:color/black"
         android:textStyle="bold"
+        app:layout_constraintEnd_toStartOf="@+id/video_actions"
         app:layout_constraintStart_toEndOf="@id/video_author"
         app:layout_constraintTop_toTopOf="@id/video_author"
-        android:text="Escreva aqui o título do vídeo" />
+        tools:text="Escreva aqui o título do vídeo" />
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/video_info"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="10dp"
         android:layout_marginTop="3dp"
         android:textSize="12sp"
+        app:layout_constraintEnd_toEndOf="@+id/video_title"
         app:layout_constraintStart_toEndOf="@id/video_author"
         app:layout_constraintTop_toBottomOf="@id/video_title"
-        android:text="ArtistaVevo - 433M views - 1 month ago" />
+        tools:text="ArtistaVevo - 433M views - 1 month ago" />
 
     <androidx.appcompat.widget.AppCompatImageView
         android:id="@+id/video_actions"

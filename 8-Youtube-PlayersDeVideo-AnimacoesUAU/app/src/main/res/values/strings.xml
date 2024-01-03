@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">Youtube</string>
+    <string name="info">%1$s - %2$s views - %3$s</string>
 </resources>
