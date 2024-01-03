@@ -3,13 +3,18 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <Transition
-        app:constraintSetStart="@+id/start"
         app:constraintSetEnd="@+id/end"
+        app:constraintSetStart="@+id/start"
         app:duration="300">
 
-        <OnClick
-            app:clickAction="toggle"
-            app:targetId="@+id/video_player" />
+        <!--        <OnClick-->
+        <!--            app:clickAction="toggle"-->
+        <!--            app:targetId="@+id/video_player" />-->
+
+        <OnSwipe
+            app:dragDirection="dragUp"
+            app:touchAnchorId="@id/video_player"
+            app:touchRegionId="@id/video_player" />
 
     </Transition>
 

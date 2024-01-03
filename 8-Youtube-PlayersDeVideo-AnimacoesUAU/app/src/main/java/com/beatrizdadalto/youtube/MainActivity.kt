@@ -4,9 +4,11 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.Menu
 import android.view.View
+import androidx.constraintlayout.motion.widget.MotionLayout
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.gson.GsonBuilder
 import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.android.synthetic.main.video_detail.view_layer
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.async
@@ -29,9 +31,12 @@ class MainActivity : AppCompatActivity() {
       supportActionBar?.title = ""
 
       val videos: MutableList<Video> = mutableListOf()
-      videoAdapter = VideoAdapter(videos) {
-         println(it)
+      videoAdapter = VideoAdapter(videos) { video ->
+         showOverlayView(video)
       }
+
+      // view da animacao comeca transparente
+      view_layer.alpha = 0f
 
       rv_main.layoutManager = LinearLayoutManager(this)
       rv_main.adapter = videoAdapter
@@ -56,6 +61,33 @@ class MainActivity : AppCompatActivity() {
    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
       menuInflater.inflate(R.menu.main_menu, menu)
       return super.onCreateOptionsMenu(menu)
+   }
+
+   private fun showOverlayView(video: Video) {
+      view_layer.animate().apply {
+         duration = 400
+         alpha(0.5f)
+      }
+
+      motion_container.setTransitionListener(object : MotionLayout.TransitionListener {
+         override fun onTransitionStarted(motionLayout: MotionLayout?, startId: Int, endId: Int) {
+         }
+
+         override fun onTransitionChange(motionLayout: MotionLayout?, startId: Int, endId: Int, progress: Float) {
+            if (progress > 0.5f) {
+               view_layer.alpha = 1.0f - progress
+            } else {
+               view_layer.alpha = 0.5f
+            }
+         }
+
+         override fun onTransitionCompleted(motionLayout: MotionLayout?, currentId: Int) {
+         }
+
+         override fun onTransitionTrigger(motionLayout: MotionLayout?, triggerId: Int, positive: Boolean, progress: Float) {
+         }
+
+      })
    }
 
    /*
