@@ -2,6 +2,8 @@ package com.beatrizdadalto.youtube
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.Menu
+import android.view.View
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.gson.GsonBuilder
 import kotlinx.android.synthetic.main.activity_main.*
@@ -13,7 +15,6 @@ import kotlinx.coroutines.withContext
 import okhttp3.OkHttpClient
 import okhttp3.Request
 
-
 class MainActivity : AppCompatActivity() {
 
    private lateinit var videoAdapter: VideoAdapter
@@ -22,6 +23,10 @@ class MainActivity : AppCompatActivity() {
       super.onCreate(savedInstanceState)
 
       setContentView(R.layout.activity_main)
+
+      // setar a toolbar do xml no lugar da actionbar padrao
+      setSupportActionBar(toolbar)
+      supportActionBar?.title = ""
 
       val videos: MutableList<Video> = mutableListOf()
       videoAdapter = VideoAdapter(videos) {
@@ -40,17 +45,22 @@ class MainActivity : AppCompatActivity() {
                videos.clear()
                videos.addAll(listVideo.data)
                videoAdapter.notifyDataSetChanged()
-               motion_container.removeView(progress_recycler)
+               progress_recycler.visibility = View.GONE
             }
          }
       }
 
    }
 
+   override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+      menuInflater.inflate(R.menu.main_menu, menu)
+      return super.onCreateOptionsMenu(menu)
+   }
+
    /*
       -> buscar dados da API
       -> buscar em uma nova Thread para
-         nao travar a Thread Principal e interface grafica. utilizar courotines(importar no gradle).
+         nao travar a Thread Principal e interface grafica. utilizar coroutines(importar no gradle).
     */
    private fun getVideo(): ListVideo? {
       val client = OkHttpClient.Builder().build()
