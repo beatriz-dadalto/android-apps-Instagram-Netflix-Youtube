@@ -13,6 +13,25 @@
         android:background="@android:color/black"
         android:visibility="visible" />
 
+    <LinearLayout
+        android:id="@+id/container_scroll"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="@android:color/white"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/video_player">
+
+        <!--   TODO: AQUI VAI UM INCLUDE     -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+        </LinearLayout>
+    </LinearLayout>
+
     <androidx.appcompat.widget.AppCompatImageView
         android:id="@+id/video_player"
         android:layout_width="0dp"
@@ -48,9 +67,187 @@
             android:text="Hello, World! Hello, World! Hello, World! Hello, World! Hello, World! Hello, World! Hello, World! Hello, World!" />
     </LinearLayout>
 
-        <SurfaceView
-            android:id="@+id/surface_player"
-            android:layout_width="0dp"
-            android:layout_height="0dp" />
+    <SurfaceView
+        android:id="@+id/surface_player"
+        android:layout_width="0dp"
+        android:layout_height="0dp" />
+
+    <View
+        android:id="@+id/view_frame"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:alpha="0"
+        android:background="@android:color/black"
+        app:layout_constraintBottom_toBottomOf="@id/video_player"
+        app:layout_constraintEnd_toEndOf="@id/video_player"
+        app:layout_constraintStart_toStartOf="@id/video_player"
+        app:layout_constraintTop_toTopOf="@id/video_player"
+        tools:alpha="1" />
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/hide_player"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="10dp"
+        android:src="@drawable/ic_keyboard_arrow_down_black_24dp"
+        app:layout_constraintStart_toStartOf="@id/video_player"
+        app:layout_constraintTop_toTopOf="@id/video_player" />
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/playlist_player"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="10dp"
+        android:alpha="0"
+        android:src="@drawable/ic_playlist_add_black_24dp"
+        app:layout_constraintEnd_toStartOf="@+id/share_player"
+        app:layout_constraintTop_toTopOf="@id/video_player"
+        tools:alpha="1" />
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/share_player"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="10dp"
+        android:alpha="0"
+        android:src="@drawable/ic_reply_black_24dp"
+        app:layout_constraintEnd_toStartOf="@id/more_player"
+        app:layout_constraintTop_toTopOf="@id/video_player"
+        tools:alpha="1" />
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/more_player"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="10dp"
+        android:alpha="0"
+        android:src="@drawable/ic_more_vert_black_24dp"
+        app:layout_constraintEnd_toEndOf="@id/video_player"
+        app:layout_constraintTop_toTopOf="@id/video_player"
+        tools:alpha="1" />
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/full_player"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="10dp"
+        android:layout_marginBottom="10dp"
+        android:alpha="0"
+        android:src="@drawable/ic_fullscreen_black_24dp"
+        app:layout_constraintBottom_toBottomOf="@id/video_player"
+        app:layout_constraintEnd_toEndOf="@id/video_player"
+        tools:alpha="1" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/duration_time"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="10dp"
+        android:layout_marginBottom="10dp"
+        android:alpha="0"
+        android:src="@drawable/ic_fullscreen_black_24dp"
+        android:text="00:00"
+        android:textColor="@android:color/white"
+        android:textSize="12sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@id/full_player"
+        app:layout_constraintEnd_toStartOf="@id/full_player"
+        app:layout_constraintTop_toTopOf="@id/full_player"
+        tools:alpha="1" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/current_time"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="10dp"
+        android:layout_marginBottom="10dp"
+        android:alpha="0"
+        android:src="@drawable/ic_fullscreen_black_24dp"
+        android:text="00:00"
+        android:textColor="@android:color/white"
+        android:textSize="12sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@id/full_player"
+        app:layout_constraintStart_toStartOf="@id/hide_player"
+        app:layout_constraintTop_toTopOf="@id/full_player"
+        tools:alpha="1" />
+
+    <ProgressBar
+        android:id="@+id/progress"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="@id/video_player"
+        app:layout_constraintEnd_toEndOf="@id/video_player"
+        app:layout_constraintStart_toStartOf="@id/video_player"
+        app:layout_constraintTop_toTopOf="@id/video_player" />
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/play_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:alpha="0"
+        android:src="@drawable/ic_pause_black_24dp"
+        app:layout_constraintBottom_toBottomOf="@id/video_player"
+        app:layout_constraintEnd_toEndOf="@id/video_player"
+        app:layout_constraintStart_toStartOf="@id/video_player"
+        app:layout_constraintTop_toTopOf="@id/video_player"
+        tools:alpha="1" />
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/next_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="50dp"
+        android:alpha="0"
+        android:src="@drawable/ic_skip_next_black_24dp"
+        app:layout_constraintBottom_toBottomOf="@id/video_player"
+        app:layout_constraintStart_toEndOf="@id/play_button"
+        app:layout_constraintTop_toTopOf="@id/video_player"
+        tools:alpha="1" />
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/previous_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="50dp"
+        android:alpha="0"
+        android:src="@drawable/ic_skip_previous_black_24dp"
+        app:layout_constraintBottom_toBottomOf="@id/video_player"
+        app:layout_constraintEnd_toStartOf="@id/play_button"
+        app:layout_constraintTop_toTopOf="@id/video_player"
+        tools:alpha="1" />
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/video_play_button"
+        android:layout_width="24dp"
+        android:layout_height="24dp"
+        android:layout_marginEnd="4dp"
+        android:src="@drawable/ic_play_arrow_black_24dp"
+        app:layout_constraintBottom_toBottomOf="@id/video_player_title"
+        app:layout_constraintEnd_toStartOf="@+id/video_cancel_button"
+        app:layout_constraintTop_toTopOf="@id/video_player_title" />
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/video_cancel_button"
+        android:layout_width="24dp"
+        android:layout_height="24dp"
+        android:layout_marginEnd="16dp"
+        android:src="@drawable/ic_close_black_24dp"
+        app:layout_constraintBottom_toBottomOf="@id/video_player_title"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@id/video_player_title" />
+
+    <androidx.appcompat.widget.AppCompatSeekBar
+        android:id="@+id/seek_bar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingStart="0dp"
+        android:paddingEnd="0dp"
+        app:layout_constraintBottom_toTopOf="@id/container_scroll"
+        app:layout_constraintTop_toTopOf="@id/container_scroll" />
 
 </merge>
