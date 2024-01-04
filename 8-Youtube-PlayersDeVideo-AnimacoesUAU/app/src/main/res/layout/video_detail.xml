@@ -18,11 +18,7 @@
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:background="@android:color/white"
-        android:orientation="vertical"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/video_player">
+        android:orientation="vertical">
 
         <!--   TODO: AQUI VAI UM INCLUDE     -->
         <LinearLayout
@@ -90,9 +86,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="10dp"
         android:layout_marginTop="10dp"
-        android:src="@drawable/ic_keyboard_arrow_down_black_24dp"
-        app:layout_constraintStart_toStartOf="@id/video_player"
-        app:layout_constraintTop_toTopOf="@id/video_player" />
+        android:src="@drawable/ic_keyboard_arrow_down_black_24dp" />
 
     <androidx.appcompat.widget.AppCompatImageView
         android:id="@+id/playlist_player"
@@ -180,10 +174,12 @@
         android:id="@+id/progress"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:visibility="gone"
         app:layout_constraintBottom_toBottomOf="@id/video_player"
         app:layout_constraintEnd_toEndOf="@id/video_player"
         app:layout_constraintStart_toStartOf="@id/video_player"
-        app:layout_constraintTop_toTopOf="@id/video_player" />
+        app:layout_constraintTop_toTopOf="@id/video_player"
+        tools:visibility="visible" />
 
     <androidx.appcompat.widget.AppCompatImageView
         android:id="@+id/play_button"
@@ -226,10 +222,7 @@
         android:layout_width="24dp"
         android:layout_height="24dp"
         android:layout_marginEnd="4dp"
-        android:src="@drawable/ic_play_arrow_black_24dp"
-        app:layout_constraintBottom_toBottomOf="@id/video_player_title"
-        app:layout_constraintEnd_toStartOf="@+id/video_cancel_button"
-        app:layout_constraintTop_toTopOf="@id/video_player_title" />
+        android:src="@drawable/ic_play_arrow_black_24dp" />
 
     <androidx.appcompat.widget.AppCompatImageView
         android:id="@+id/video_cancel_button"
