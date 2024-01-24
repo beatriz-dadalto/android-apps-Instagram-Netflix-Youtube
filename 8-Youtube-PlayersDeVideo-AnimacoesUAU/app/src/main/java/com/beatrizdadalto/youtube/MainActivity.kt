@@ -7,8 +7,13 @@ import android.view.View
 import androidx.constraintlayout.motion.widget.MotionLayout
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.gson.GsonBuilder
+import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.video_detail.view_layer
+import kotlinx.android.synthetic.main.video_detail_content.content_channel
+import kotlinx.android.synthetic.main.video_detail_content.content_title
+import kotlinx.android.synthetic.main.video_detail_content.img_channel
+import kotlinx.android.synthetic.main.video_detail_content.rv_similar
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.async
@@ -73,7 +78,12 @@ class MainActivity : AppCompatActivity() {
          override fun onTransitionStarted(motionLayout: MotionLayout?, startId: Int, endId: Int) {
          }
 
-         override fun onTransitionChange(motionLayout: MotionLayout?, startId: Int, endId: Int, progress: Float) {
+         override fun onTransitionChange(
+            motionLayout: MotionLayout?,
+            startId: Int,
+            endId: Int,
+            progress: Float
+         ) {
             if (progress > 0.5f) {
                view_layer.alpha = 1.0f - progress
             } else {
@@ -84,10 +94,25 @@ class MainActivity : AppCompatActivity() {
          override fun onTransitionCompleted(motionLayout: MotionLayout?, currentId: Int) {
          }
 
-         override fun onTransitionTrigger(motionLayout: MotionLayout?, triggerId: Int, positive: Boolean, progress: Float) {
+         override fun onTransitionTrigger(
+            motionLayout: MotionLayout?,
+            triggerId: Int,
+            positive: Boolean,
+            progress: Float
+         ) {
          }
 
       })
+
+      val detailAdapter = VideoDetailAdapter(videos())
+      rv_similar.layoutManager = LinearLayoutManager(this)
+      rv_similar.adapter = detailAdapter
+
+      content_channel.text = video.publisher.name
+      content_title.text = video.title
+      Picasso.get().load(video.publisher.pictureProfileUrl).into(img_channel)
+
+      detailAdapter.notifyDataSetChanged()
    }
 
    /*

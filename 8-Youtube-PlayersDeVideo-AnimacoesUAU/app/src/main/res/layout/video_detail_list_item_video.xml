@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_marginBottom="20dp"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/video_thumbnail"
+        android:layout_width="160dp"
+        android:layout_height="0dp"
+        android:scaleType="centerCrop"
+        app:layout_constraintDimensionRatio="h,16:9"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:background="@tools:sample/backgrounds/scenic" />
+
+    <TextView
+        android:id="@+id/video_title"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:maxLines="2"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toStartOf="@+id/video_actions"
+        app:layout_constraintStart_toEndOf="@id/video_thumbnail"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="Entrevista com Marlon Wayans | The Noite" />
+
+    <TextView
+        android:id="@+id/video_info"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="3dp"
+        android:textSize="12sp"
+        app:layout_constraintEnd_toStartOf="@id/video_actions"
+        app:layout_constraintStart_toStartOf="@id/video_title"
+        app:layout_constraintTop_toBottomOf="@id/video_title"
+        tools:text="Entrevista com Marlon Wayans | The Noite" />
+
+    <ImageView
+        android:id="@+id/video_actions"
+        android:layout_width="18dp"
+        android:layout_height="18dp"
+        android:background="@drawable/ic_more_vert_blacked_24dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

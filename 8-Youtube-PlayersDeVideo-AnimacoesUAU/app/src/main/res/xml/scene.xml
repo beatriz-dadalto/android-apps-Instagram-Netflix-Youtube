@@ -123,7 +123,7 @@
             android:layout_marginStart="10dp"
             android:layout_marginEnd="10dp"
             android:layout_marginBottom="18dp"
-            android:translationY="-42dp"
+            android:translationY="-45dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -131,7 +131,6 @@
         <Constraint
             android:id="@+id/video_player_title"
             android:layout_marginStart="130dp"
-            android:layout_marginEnd="10dp"
             app:layout_constraintBottom_toBottomOf="@id/video_player"
             app:layout_constraintEnd_toEndOf="@+id/video_player"
             app:layout_constraintStart_toStartOf="@id/video_player"
@@ -140,7 +139,7 @@
             android:id="@+id/video_play_button"
             android:layout_width="24dp"
             android:layout_height="24dp"
-            android:layout_marginEnd="10dp"
+            android:layout_marginEnd="5dp"
             app:layout_constraintBottom_toBottomOf="@id/video_player_title"
             app:layout_constraintEnd_toStartOf="@+id/video_cancel_button"
             app:layout_constraintTop_toTopOf="@id/video_player_title" />
@@ -148,7 +147,7 @@
             android:id="@+id/video_cancel_button"
             android:layout_width="24dp"
             android:layout_height="24dp"
-            android:layout_marginEnd="25dp"
+            android:layout_marginEnd="20dp"
             app:layout_constraintBottom_toBottomOf="@id/video_player_title"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="@id/video_player_title" />
@@ -158,7 +157,7 @@
             android:layout_marginEnd="10dp"
             android:layout_marginBottom="18dp"
             android:scaleX=".4"
-            android:translationX="-120dp"
+            android:translationX="-111dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintDimensionRatio="17:3"
             app:layout_constraintEnd_toEndOf="parent"
@@ -166,15 +165,14 @@
         <Constraint
             android:id="@+id/surface_player"
             android:scaleX=".4"
-            android:translationX="-120dp"
+            android:translationX="-111dp"
             app:layout_constraintBottom_toBottomOf="@id/video_player"
-            app:layout_constraintEnd_toEndOf="@id/video_player"
-            app:layout_constraintStart_toStartOf="@id/video_player"
+            app:layout_constraintEnd_toEndOf="@id/container_scroll"
+            app:layout_constraintStart_toStartOf="@id/container_scroll"
             app:layout_constraintTop_toTopOf="@id/video_player" />
         <Constraint
             android:id="@+id/video_player_title"
-            android:layout_marginStart="124dp"
-            android:layout_marginEnd="2dp"
+            android:layout_marginStart="132dp"
             app:layout_constraintBottom_toBottomOf="@id/video_player"
             app:layout_constraintEnd_toEndOf="@id/video_player"
             app:layout_constraintStart_toStartOf="@id/video_player"
