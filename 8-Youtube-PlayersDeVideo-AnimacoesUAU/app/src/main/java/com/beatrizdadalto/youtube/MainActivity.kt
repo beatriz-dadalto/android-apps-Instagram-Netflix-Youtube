@@ -57,6 +57,22 @@ class MainActivity : AppCompatActivity() {
          }
       }
 
+      seek_bar.setOnSeekBarChangeListener(object : SeekBar.OnSeekBarChangeListener {
+         override fun onProgressChanged(seekBar: SeekBar?, progress: Int, fromUser: Boolean) {
+            if (fromUser) {
+               youtubePlayer.seek(progress.toLong())
+            }
+         }
+
+         override fun onStartTrackingTouch(seekBar: SeekBar?) {
+            //
+         }
+
+         override fun onStopTrackingTouch(seekBar: SeekBar?) {
+            //
+         }
+      })
+
       preparePlayer()
    }
 
@@ -77,8 +93,8 @@ class MainActivity : AppCompatActivity() {
 
          }
 
-         override fun onTrackTime(currentPosition: Long) {
-            motion_container.seek_bar.progress = currentPosition.toInt()
+         override fun onTrackTime(currentPosition: Long, percent: Long) {
+            motion_container.seek_bar.progress = percent.toInt()
             motion_container.current_time.text = currentPosition.formatTime()
          }
       }

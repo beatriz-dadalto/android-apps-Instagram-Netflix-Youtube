@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.motion.widget.MotionLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<com.beatrizdadalto.youtube.TouchMotionLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/motion_container"
@@ -61,4 +61,4 @@
             android:layout_gravity="center"
             android:indeterminateTint="@android:color/holo_red_light" />
     </FrameLayout>
-</androidx.constraintlayout.motion.widget.MotionLayout>
+</com.beatrizdadalto.youtube.TouchMotionLayout>
