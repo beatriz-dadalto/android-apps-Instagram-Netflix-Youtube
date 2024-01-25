@@ -1,30 +1,26 @@
 package com.beatrizdadalto.youtube
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.Menu
 import android.view.View
+import android.widget.SeekBar
+import androidx.appcompat.app.AppCompatActivity
 import androidx.constraintlayout.motion.widget.MotionLayout
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.gson.GsonBuilder
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.activity_main.*
-import kotlinx.android.synthetic.main.video_detail.view_layer
-import kotlinx.android.synthetic.main.video_detail_content.content_channel
-import kotlinx.android.synthetic.main.video_detail_content.content_title
-import kotlinx.android.synthetic.main.video_detail_content.img_channel
-import kotlinx.android.synthetic.main.video_detail_content.rv_similar
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.async
-import kotlinx.coroutines.launch
-import kotlinx.coroutines.withContext
+import kotlinx.android.synthetic.main.video_detail.*
+import kotlinx.android.synthetic.main.video_detail.view.*
+import kotlinx.android.synthetic.main.video_detail_content.*
+import kotlinx.coroutines.*
 import okhttp3.OkHttpClient
 import okhttp3.Request
 
 class MainActivity : AppCompatActivity() {
 
    private lateinit var videoAdapter: VideoAdapter
+   private lateinit var youtubePlayer: YoutubePlayer
 
    override fun onCreate(savedInstanceState: Bundle?) {
       super.onCreate(savedInstanceState)
@@ -61,6 +57,22 @@ class MainActivity : AppCompatActivity() {
          }
       }
 
+      preparePlayer()
+   }
+
+   override fun onDestroy() {
+      super.onDestroy()
+      youtubePlayer.release()
+   }
+
+   override fun onPause() {
+      super.onPause()
+      youtubePlayer.pause()
+   }
+
+   private fun preparePlayer() {
+      youtubePlayer = YoutubePlayer(this)
+      surface_player.holder.addCallback(youtubePlayer)
    }
 
    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
@@ -103,6 +115,9 @@ class MainActivity : AppCompatActivity() {
          }
 
       })
+
+      video_player.visibility = View.GONE
+      youtubePlayer.setUrl(video.videoUrl)
 
       val detailAdapter = VideoDetailAdapter(videos())
       rv_similar.layoutManager = LinearLayoutManager(this)

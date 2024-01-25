@@ -63,4 +63,8 @@ dependencies {
     implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:$coroutines_version"
     implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:$coroutines_version"
 
+
+    // https://github.com/google/ExoPlayer -> An extensible media player for Android
+    implementation 'com.google.android.exoplayer:exoplayer:2.11.7'
+
 }
