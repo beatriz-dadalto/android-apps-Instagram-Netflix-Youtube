@@ -14,6 +14,9 @@ import com.google.android.exoplayer2.util.Util
 class YoutubePlayer(private val context: Context) : SurfaceHolder.Callback {
 
    private var mediaPlayer: SimpleExoPlayer? = null
+   var youtubePlayerListener: YoutubePlayerListener? = null
+   private lateinit var runnable: Runnable
+   private val handler = Handler()
 
    override fun surfaceCreated(holder: SurfaceHolder) {
       if (mediaPlayer == null) {
@@ -41,7 +44,26 @@ class YoutubePlayer(private val context: Context) : SurfaceHolder.Callback {
             .createMediaSource(Uri.parse(url))
 
          it.prepare(videoSource)
+         it.addListener(object : Player.EventListener {
+            override fun onIsPlayingChanged(isPlaying: Boolean) {
+               if (isPlaying) {
+                  trackTime()
+               }
+            }
+         })
          play()
+      }
+   }
+
+   private fun trackTime() {
+      mediaPlayer?.let {
+         youtubePlayerListener?.onTrackTime(it.currentPosition * 100 / it.duration)
+         if (it.isPlaying) {
+            runnable = Runnable {
+               trackTime()
+            }
+            handler.postDelayed(runnable, 1000)
+         }
       }
    }
 
@@ -55,5 +77,10 @@ class YoutubePlayer(private val context: Context) : SurfaceHolder.Callback {
 
    fun release() {
       mediaPlayer?.release()
+   }
+
+   interface YoutubePlayerListener {
+      fun onPrepared(duration: Int)
+      fun onTrackTime(currentPosition: Long)
    }
 }

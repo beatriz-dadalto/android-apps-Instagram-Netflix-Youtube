@@ -72,6 +72,16 @@ class MainActivity : AppCompatActivity() {
 
    private fun preparePlayer() {
       youtubePlayer = YoutubePlayer(this)
+      youtubePlayer.youtubePlayerListener = object : YoutubePlayer.YoutubePlayerListener {
+         override fun onPrepared(duration: Int) {
+
+         }
+
+         override fun onTrackTime(currentPosition: Long) {
+            motion_container.seek_bar.progress = currentPosition.toInt()
+            motion_container.current_time.text = currentPosition.formatTime()
+         }
+      }
       surface_player.holder.addCallback(youtubePlayer)
    }
 
